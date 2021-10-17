@@ -100,7 +100,7 @@ def test():
         outputAllReplies(top_level_comment, "\t")
         print("\n\n---\n\n")
 
-def getLatest100CommentsAndComments():
+def getLatest100SubmissionsAndComments():
     reddit = login()
     subreddit = reddit.subreddit("Austria")
     for submission in subreddit.stream.submissions():
