@@ -2,8 +2,17 @@ from datetime import datetime
 import praw
 
 def login():
+    # contains your login info comma-separated params: client_id, client_secret, user_agent
+    login_data = open("res/login-data.txt", "r")
+    my_params = login_data.read().split(',')
+    my_client_id = my_params[0]
+    my_client_secret = my_params[1]
+    my_user_agent = my_params[2]
     return praw.Reddit(
         # insert login info here
+        client_id=my_client_id,
+        client_secret=my_client_secret,
+        user_agent=my_user_agent
     )
 
 def prettyPrinterComments(comment, prefix):
@@ -91,7 +100,7 @@ def test():
         outputAllReplies(top_level_comment, "\t")
         print("\n\n---\n\n")
 
-def test2():
+def getLatest100CommentsAndComments():
     reddit = login()
     subreddit = reddit.subreddit("Austria")
     for submission in subreddit.stream.submissions():
