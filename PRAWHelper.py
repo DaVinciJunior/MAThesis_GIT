@@ -114,15 +114,14 @@ def test2():
         print("\n\n---\n\n")
     print("We're done!!")
 
-def getLatest100SubmissionsAndComments():
+# default: n = 100
+def get_n_LatestSubmissionsAndComments(n=100):
     reddit = login()
     subreddit = reddit.subreddit("Austria")
-    i = 1
-    for submission in subreddit.new(limit=100):
-        print(str(i) + "--------------------------")
+    for submission in subreddit.new(limit=n):
+        print("--------------------------")
         prettyPrinterSubmissions(submission)
         print("------------------------------")
-        i = i + 1
         submission.comments.replace_more(limit=0)
         for top_level_comment in submission.comments:
             prettyPrinterComments(top_level_comment, "\t")
