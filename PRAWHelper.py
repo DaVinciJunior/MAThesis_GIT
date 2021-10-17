@@ -100,7 +100,7 @@ def test():
         outputAllReplies(top_level_comment, "\t")
         print("\n\n---\n\n")
 
-def getLatest100SubmissionsAndComments():
+def test2():
     reddit = login()
     subreddit = reddit.subreddit("Austria")
     for submission in subreddit.stream.submissions():
@@ -112,3 +112,20 @@ def getLatest100SubmissionsAndComments():
             prettyPrinterComments(top_level_comment, "\t")
             outputAllReplies(top_level_comment, "\t\t")
         print("\n\n---\n\n")
+    print("We're done!!")
+
+def getLatest100SubmissionsAndComments():
+    reddit = login()
+    subreddit = reddit.subreddit("Austria")
+    i = 1
+    for submission in subreddit.new(limit=100):
+        print(str(i) + "--------------------------")
+        prettyPrinterSubmissions(submission)
+        print("------------------------------")
+        i = i + 1
+        submission.comments.replace_more(limit=0)
+        for top_level_comment in submission.comments:
+            prettyPrinterComments(top_level_comment, "\t")
+            outputAllReplies(top_level_comment, "\t\t")
+        print("\n\n---\n\n")
+    print("We're done!!")
