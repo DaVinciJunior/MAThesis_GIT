@@ -116,6 +116,10 @@ def test2():
 
 # default: n = 100
 def get_n_LatestSubmissionsAndComments(n=100):
+    get_n_LatestSubmissionsAndCommentsAndExecuteFunction(n=n)
+
+
+def get_n_LatestSubmissionsAndCommentsAndExecuteFunction(n=100, func=None):
     reddit = login()
     subreddit = reddit.subreddit("Austria")
     for submission in subreddit.new(limit=n):
@@ -125,6 +129,8 @@ def get_n_LatestSubmissionsAndComments(n=100):
         submission.comments.replace_more(limit=0)
         for top_level_comment in submission.comments:
             prettyPrinterComments(top_level_comment, "\t")
+            if (func != None):
+                func(top_level_comment.body)
             outputAllReplies(top_level_comment, "\t\t")
         print("\n\n---\n\n")
-    print("We're done!!")
+    # print("We're done!!")
