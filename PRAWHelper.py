@@ -1,6 +1,9 @@
 from datetime import datetime
 import praw
 
+import sentHelper
+
+
 def login():
     # contains your login info comma-separated params: client_id, client_secret, user_agent
     login_data = open("res/login-data.txt", "r")
@@ -15,7 +18,7 @@ def login():
         user_agent=my_user_agent
     )
 
-def prettyPrinterComments(comment, prefix):
+def prettyPrinterComments(comment, sentiment, prefix):
     id = ""
     user = ""
     score = ""
@@ -42,7 +45,13 @@ def prettyPrinterComments(comment, prefix):
     except:
         text = "Faulty-Textbody"
 
-    print(prefix + "<" + id + ">" + user + "[" + score + "]" + "{" + time + "}" + text)
+    if user == "BOT":
+        print(prefix + "BOT Message ignored...")
+        return
+
+    print(prefix + "<" + id + ">" + user + "[" + score + "]" + "{" + time + "}" + text, end='\n')
+    if sentiment != None:
+        print(prefix + str(sentiment))
 
 def prettyPrinterSubmissions(submission):
     id = ""
@@ -84,35 +93,14 @@ def prettyPrinterSubmissions(submission):
 
     print("<" + id + ">" + user + "[" + score + "-" + upvote_ratio + "]" + "{" + time + "}" + title + " #" + numberOfComments)
 
-def outputAllReplies(comment, prefix):
+def outputAllReplies(comment, func, prefix):
     for reply in comment.replies:
-        prettyPrinterComments(reply, prefix)
-        outputAllReplies(reply, prefix + "\t")
-
-def test():
-    reddit = login()
-    #submission = reddit.submission(id="pyia16")
-    submission = reddit.submission(id="q1ycfb")
-    # replace "Show more" with limit = 0 (inifinte)
-    submission.comments.replace_more(limit=0)
-    for top_level_comment in submission.comments:
-        prettyPrinterComments(top_level_comment, "")
-        outputAllReplies(top_level_comment, "\t")
-        print("\n\n---\n\n")
-
-def test2():
-    reddit = login()
-    subreddit = reddit.subreddit("Austria")
-    for submission in subreddit.stream.submissions():
-        print("------------------------------")
-        prettyPrinterSubmissions(submission)
-        print("------------------------------")
-        submission.comments.replace_more(limit=0)
-        for top_level_comment in submission.comments:
-            prettyPrinterComments(top_level_comment, "\t")
-            outputAllReplies(top_level_comment, "\t\t")
-        print("\n\n---\n\n")
-    print("We're done!!")
+        reply = sentHelper.preprocessComments(reply)
+        sentiment = None
+        if func != None:
+            sentiment = func(comment.body)
+        prettyPrinterComments(reply, sentiment, prefix)
+        outputAllReplies(reply, func, prefix + "\t")
 
 # default: n = 100
 def get_n_LatestSubmissionsAndComments(n=100):
@@ -128,9 +116,37 @@ def get_n_LatestSubmissionsAndCommentsAndExecuteFunction(n=100, func=None):
         print("------------------------------")
         submission.comments.replace_more(limit=0)
         for top_level_comment in submission.comments:
-            prettyPrinterComments(top_level_comment, "\t")
+            top_level_comment = sentHelper.preprocessComments(top_level_comment)
+            sentiment = None
             if (func != None):
-                func(top_level_comment.body)
-            outputAllReplies(top_level_comment, "\t\t")
+                sentiment = func(top_level_comment.body)
+            prettyPrinterComments(top_level_comment, sentiment, "\t")
+            outputAllReplies(top_level_comment, func, "\t\t")
         print("\n\n---\n\n")
-    # print("We're done!!")
+
+
+    ################### FAILED EXPERIMENTS ###################
+
+
+# Research Notes: 26.10.2021 Tested over multiple days over multiple times - to no avail
+# Tested features: mod_note, mod_reason_by, mod_reason_title, mod_reports, num_reports, removal_reason, removed_by, report_reasons
+def findAVariantSubmission():
+    reddit = login()
+    subreddit = reddit.subreddit("Austria")
+    for submission in subreddit.new(limit=None):
+        if submission.mod_note != None or submission.mod_reason_by != None or submission.mod_reason_title != None or \
+            submission.mod_reports or submission.num_reports != None or submission.removal_reason != None or \
+                submission.removed_by != None or submission.report_reasons:
+            print("--------------------------")
+            prettyPrinterSubmissions(submission)
+            print(str(submission.mod_note))
+            print(str(submission.mod_reason_by))
+            print(str(submission.mod_reason_title))
+            print(str(submission.mod_reports))
+            print(str(submission.num_reports))
+            print(str(submission.removal_reason))
+            print(str(submission.removed_by))
+            print(str(submission.report_reasons))
+            print("------------------------------")
+        else:
+            print(".", end="")

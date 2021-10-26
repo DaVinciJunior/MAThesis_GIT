@@ -2,6 +2,10 @@ import sentHelper
 import PRAWHelper
 
 if __name__ == "__main__":
-    #PRAWHelper.test()
-    #PRAWHelper.test2()
-    PRAWHelper.get_n_LatestSubmissionsAndComments()
+    PRAWHelper.get_n_LatestSubmissionsAndCommentsAndExecuteFunction(n=10000, func=sentHelper.sent)
+
+    ################### FAILED EXPERIMENTS ###################
+
+
+    # Experiment failed - see function's comment for details
+    #PRAWHelper.findAVariantSubmission()
