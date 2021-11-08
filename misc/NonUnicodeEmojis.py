@@ -1,9 +1,15 @@
 import re
+from praw.models.reddit import comment
 
-def demojize(comment):
-    for key in NON_UNICODE_EMOJIS.keys():
-        comment.body = re.sub(REGEX_WHITESPACE + re.escape(key) + REGEX_WHITESPACE, " " + NON_UNICODE_EMOJIS[key] + " ", comment.body)
-    return comment
+
+def demojize(text):
+    if isinstance(text, comment.__class__):
+        for key in NON_UNICODE_EMOJIS.keys():
+            text.body = re.sub(REGEX_BEGIN + re.escape(key) + REGEX_BEGIN, " " + NON_UNICODE_EMOJIS[key] + " ", text.body)
+    elif isinstance(text, str):
+        for key in NON_UNICODE_EMOJIS.keys():
+            text = re.sub(REGEX_BEGIN + re.escape(key) + REGEX_END, " " + NON_UNICODE_EMOJIS[key] + " ", text)
+    return text
 
 # some emojis were taken from https://emoticoncentral.com/category/classic
 # others were taken from the data obtained
@@ -49,6 +55,7 @@ PIKACHU = ":pikachu:"
 COUPLE_KISSING = ":couple_kissing:"
 PIKACHU_FACE = ":pikachu_face:"
 KYRBI = ":kyrbi:"
+FACEPALM = ":facepalm:"
 
 NON_UNICODE_EMOJIS = {
     # Creative Emojis
@@ -184,6 +191,22 @@ NON_UNICODE_EMOJIS = {
     "=-[": SAD,
     "=[": SAD,
     "=っ[": SAD,
+    ":/": SAD,
+    ":-/": SAD,
+    "=/": SAD,
+    "=-/": SAD,
+    "/:": SAD,
+    "/-:": SAD,
+    "/=": SAD,
+    "/-=": SAD,
+    ":\\": SAD,
+    ":-\\": SAD,
+    "=\\": SAD,
+    "=-\\": SAD,
+    "\\:": SAD,
+    "\\-:": SAD,
+    "\\=": SAD,
+    "\\-=": SAD,
     "ˊ＿>ˋ": CALM,
     "Z_Z": SLEEPY_EYES,
     "Z-Z": SLEEPY_EYES,
@@ -391,6 +414,13 @@ NON_UNICODE_EMOJIS = {
     "(-;": WINK,
     "[;": WINK,
     "[-;": WINK,
+    "(/.-)": FACEPALM,
+    "(-.\\)": FACEPALM,
+    "(/.\\)": FACEPALM,
+    "/.-": FACEPALM,
+    "-.\\": FACEPALM,
+    "/.\\": FACEPALM,
 }
 
-REGEX_WHITESPACE = r"\s"
+REGEX_BEGIN = r"(\s){0,1}"
+REGEX_END = r"((\W\D)+|$)"

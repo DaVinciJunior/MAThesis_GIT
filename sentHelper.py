@@ -3,7 +3,7 @@ import re
 import emoji
 import sys
 sys.path.insert(1, "./misc/")
-import NonUnicodeEmojis
+from misc import NonUnicodeEmojis
 
 REGEX_URL_PARSER = r"((\w+:\/{2}[\d\w-]+(\.[\d\w-]+)*(?:(?:\/[^\s/]*))*)|((mailto:)?[\d\w-]+@[\d\w-]+\.[\d\w-]+)|((www.)[\d\w-]+\.[\d\w-]+))(\/\S+)?"
 
