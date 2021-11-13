@@ -1,5 +1,3 @@
-###### textblob_de/ext/_pattern/text/init.py
-
 #### PATTERN | TEXT | PARSER #######################################################################
 # -*- coding: utf-8 -*-
 # Copyright (c) 2010 University of Antwerp, Belgium
@@ -2102,16 +2100,9 @@ class Sentiment(lazydict):
                 continue
             # ORIGINAL: if w in self and pos in self[w]:
             if w in [word.lower() for word in self]:
-                # Try catch added for capitalizing the first letter because dictionaries are my arch enemy now
-                try:
-                    p, s, i = self[w][pos]
-                except KeyError:
-                    try:
-                        w = w.capitalize()
-                        p, s, i = self[w][pos]
-                    except KeyError:
-                        w = w.upper()
-                        p, s, i = self[w][pos]
+                # Get the key without having to care about eventual capitalizings anywhere like in the word GmbH
+                w = [word for word in self if w == word.lower()][0]
+                p, s, i = self[w][pos]
                 # Known word not preceded by a modifier ("good").
                 if m is None:
                     a.append(dict(w=[w], p=p, s=s, i=i, n=1, x=self.labeler.get(w)))
