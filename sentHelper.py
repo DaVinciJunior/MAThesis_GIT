@@ -15,9 +15,11 @@ def preprocessComments(comment):
             comment.author.name = 'BOT'
             comment.body = ''
             return comment
-    # Replace unnecessary escaped characters as this otherwise makes problems when analyzing
-    comment.body = comment.body.replace("\"", "\\\"")
-    comment.body = comment.body.replace("\'", "\\\'")
+
+    # UNNECESSARY!!! Already escaped -> Replace unnecessary escaped characters as this otherwise makes problems when analyzing
+    # comment.body = comment.body.replace("\"", "\\\"")
+    # comment.body = comment.body.replace("\'", "\\\'")
+
     # Filter out urls (http, https, ftp, mailto, www., ...)
     comment.body = re.sub(pattern=REGEX_URL_PARSER, repl="", string=comment.body)
     # Replace emojis
@@ -27,6 +29,10 @@ def preprocessComments(comment):
     return comment
 
 def sent(text):
+    # Replace characters with their appropriate counter-part for analyzing sentiment
+    text = re.sub(pattern="“|„|”", repl="\"", string=text)
+    text = re.sub(pattern="’|`", repl="\'", string=text)
+
     blob = TextBlob(text)
     blob.parse()
     #print(blob.sentences)

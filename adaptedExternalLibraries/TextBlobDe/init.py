@@ -18,6 +18,7 @@ import re
 import string
 import types
 import codecs
+import UnknownWordsLogger
 
 from xml.etree import cElementTree
 from itertools import chain
@@ -2090,6 +2091,7 @@ class Sentiment(lazydict):
             where chunk is a list of successive words: a known word optionally
             preceded by a modifier ("very good") or a negation ("not good").
         """
+
         a = []
         m = None  # Preceding modifier (i.e., adverb or adjective).
         n = None  # Preceding negation (e.g., "not beautiful").
@@ -2141,6 +2143,8 @@ class Sentiment(lazydict):
                 # Unknown word. Retain modifier across small words ("really is a good").
                 elif m and len(w) > 2:
                     m = None
+                else:
+                    UnknownWordsLogger.addWord(w)
                 # Exclamation marks boost previous word.
                 if w == "!" and len(a) > 0:
                     a[-1]["w"].append("!")
@@ -2154,6 +2158,8 @@ class Sentiment(lazydict):
                         if w in map(lambda e: e.lower(), e):
                             a.append(dict(w=[w], p=p, s=1.0, i=1.0, n=1, x=MOOD))
                             break
+                else:
+                    UnknownWordsLogger.addWord(w)
         for i in range(len(a)):
             w = a[i]["w"]
             p = a[i]["p"]

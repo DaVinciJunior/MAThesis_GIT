@@ -3,7 +3,7 @@ from praw.models.reddit import comment
 
 
 def demojize(text):
-    if isinstance(text, comment.__class__):
+    if isinstance(text, comment.Comment):
         for key in NON_UNICODE_EMOJIS.keys():
             text.body = re.sub(REGEX_BEGIN + re.escape(key) + REGEX_END, " " + NON_UNICODE_EMOJIS[key] + " ", text.body)
     elif isinstance(text, str):
