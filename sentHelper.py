@@ -6,6 +6,37 @@ sys.path.insert(1, "./misc/")
 from misc import NonUnicodeEmojis
 
 REGEX_URL_PARSER = r"((\w+:\/{2}[\d\w-]+(\.[\d\w-]+)*(?:(?:\/[^\s/]*))*)|((mailto:)?[\d\w-]+@[\d\w-]+\.[\d\w-]+)|((www.)[\d\w-]+\.[\d\w-]+))(\/\S+)?"
+STOP_WORDS = [
+    "man",
+    "sich",
+    "vor",
+    "es",
+    "werden",
+    "ein",
+    "die",
+    "das",
+    "der",
+    "uns",
+    "unser",
+    "und",
+    "noch",
+    "in",
+    "ins", #short form of "in das"
+    "weil",
+    "aber",
+    "da",
+    "ja",
+    "sogar",
+    "hier",
+    "auch",
+    "jetzt",
+    "ich",
+    "ob",
+    "mit",
+    "weiter",
+    "denn",
+    "doch"
+]
 
 
 def preprocessComments(comment):
@@ -33,11 +64,14 @@ def sent(text):
     text = re.sub(pattern="“|„|”", repl="\"", string=text)
     text = re.sub(pattern="’|`", repl="\'", string=text)
 
-    blob = TextBlob(text)
+    # TODO: Add Dialect mapping
+
+    # Filter out stop words
+    filtered_text = ""
+    for token in TextBlob(text).tokenize():
+        if not TextBlob(token.lower()).parse() in STOP_WORDS:
+            filtered_text = filtered_text + " " + token
+
+    blob = TextBlob(filtered_text)
     blob.parse()
-    #print(blob.sentences)
-    #print(blob.tokens)
-    #print(blob.tags)
-    #print(blob.noun_phrases)
-    #print(text + " - " + str(blob.sentiment) + "\n\n")
     return blob.sentiment

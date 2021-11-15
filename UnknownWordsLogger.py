@@ -20,16 +20,19 @@ file_handler.setLevel(logging.INFO)
 #file_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
 logger.addHandler(file_handler)
 
-unknown_words = []
+unknown_words = {}
 
 def addWord(word):
     # only add word if consists of following regex - otherwise it is just a random character, number, ...
     if re.fullmatch(pattern="((\d)*([a-z]|[A-Z]|[äöü]|[ÄÖÜ]|[é])+(\S)*)+", string=word):
-        unknown_words.append(word)
+        word = word.lower()
+        if word in unknown_words.keys():
+            unknown_words[word] = unknown_words[word] + 1
+        else:
+            unknown_words[word] = 1
 
 def log():
     # Remove duplicates via set()
     # Initialize lower unknown words
-    unknown_words_lower = set([unknown_word.lower() for unknown_word in unknown_words])
-    for word in unknown_words_lower:
-        logger.info(word)
+    for word in unknown_words.keys():
+        logger.info(word + ":" + str(unknown_words[word]))

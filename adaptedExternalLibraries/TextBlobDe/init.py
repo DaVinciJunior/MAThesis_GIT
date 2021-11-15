@@ -34,7 +34,6 @@ from _pattern.compat import text_type, string_types, basestring, imap, unicode, 
 from _pattern.text.tree import Tree, Text, Sentence, Slice, Chunk, PNPChunk, Chink, Word, table
 from _pattern.text.tree import SLASH, WORD, POS, CHUNK, PNP, REL, ANCHOR, LEMMA, AND, OR
 
-
 # --- STRING FUNCTIONS ------------------------------------------------------------------------------
 # Latin-1 (ISO-8859-1) encoding is identical to Windows-1252 except for the code points 128-159:
 # Latin-1 assigns control codes in this range, Windows-1252 has characters, punctuation, symbols
@@ -2136,7 +2135,8 @@ class Sentiment(lazydict):
                 elif n and len(w.strip("'")) > 1:
                     n = None
                 # Unknown word may be a negation preceded by a modifier ("really not good").
-                if n is not None and m is not None and (pos in self.modifiers or self.modifier(m[0])):
+                if n is not None:
+                #if n is not None and m is not None and (pos in self.modifiers or self.modifier(m[0])):
                     a[-1]["w"].append(n)
                     a[-1]["n"] = -1
                     n = None
@@ -2167,7 +2167,8 @@ class Sentiment(lazydict):
             n = a[i]["n"]
             x = a[i]["x"]
             # "not good" = slightly bad, "not bad" = slightly good.
-            a[i] = (w, p * -0.5 if n < 0 else p, s, x)
+            # ORIGINAL a[i] = (w, p * -0.5 if n < 0 else p, s, x)
+            a[i] = (w, p * -1.0 if n < 0 else p, s, x)
         return a
 
     def annotate(self, word, pos=None, polarity=0.0, subjectivity=0.0, intensity=1.0, label=None):
