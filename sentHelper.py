@@ -10,6 +10,7 @@ sys.path.insert(1, "./misc/")
 sys.path.insert(2, "./utils/")
 from misc import NonUnicodeEmojis
 from sentUtils import getCorrectKeyForSentimentAnalysis, getLowerSentimentList, lemmatize
+from langdetect import detect
 
 REGEX_URL_PARSER = r"((\w+:\/{2}[\d\w-]+(\.[\d\w-]+)*(?:(?:\/[^\s/]*))*)|((mailto:)?[\d\w-]+@[\d\w-]+\.[\d\w-]+)|((www.)[\d\w-]+\.[\d\w-]+))(\/\S+)?"
 STOP_WORDS = [
@@ -49,7 +50,21 @@ STOP_WORDS = [
     "denn",
     "doch",
     "sein",
-    "den"
+    "den",
+    "nur",
+    "bei",
+    "paar",
+    "dem",
+    "am",
+    "vorbei",
+    "zu",
+    "wenn",
+    "dann",
+    "von",
+    "an",
+    "auf",
+    "so",
+    "schon"
 ]
 
 def preprocessComments(comment):
@@ -59,6 +74,11 @@ def preprocessComments(comment):
             comment.author.name = 'BOT'
             comment.body = ''
             return comment
+    # Remove non-german texts
+    elif detect(comment.body) != 'de':
+        comment.author.name = 'NON-GERMAN-COMMENT'
+        comment.body = ''
+        return comment
 
     # UNNECESSARY!!! Already escaped -> Replace unnecessary escaped characters as this otherwise makes problems when analyzing
     # comment.body = comment.body.replace("\"", "\\\"")
@@ -113,7 +133,7 @@ def sent(text):
                 token = lemmatized
             if not token in STOP_WORDS:
                 filtered_text = filtered_text + " " + token
-    print(filtered_text)
+    # print(filtered_text)
     blob = TextBlob(filtered_text)
     blob.parse()
     return blob.sentiment

@@ -390,6 +390,7 @@ NON_UNICODE_EMOJIS = {
     ":-@": ANGRY,
     "=@": ANGRY,
     "=-@": ANGRY,
+    "-.-": ANGRY,
     ":&": SICK,
     ":-&": SICK,
     "=&": SICK,

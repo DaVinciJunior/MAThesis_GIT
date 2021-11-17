@@ -92,6 +92,7 @@ Important note on PoS tags: the source did not specify part-of-speech tags. The 
   <word confidence="1.0" form="impfpflicht" intensity="1.0" polarity="-0.25" pos="NN" subjectivity="0.0"/>
   <word confidence="1.0" form="impfpflich" intensity="1.0" polarity="-0.25" pos="NN" subjectivity="0.0"/> <!-- often occuring misspelling -->
   <word confidence="1.0" form="milliarde" intensity="1.0" polarity="0.25" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="milliarden" intensity="1.0" polarity="0.25" pos="NN" subjectivity="0.0"/>
   <word confidence="1.0" form="gesundheitspersonal" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
   <word confidence="1.0" form="sinn" intensity="1.0" polarity="1.0" pos="NN" subjectivity="0.0"/>
   <word confidence="1.0" form="leut" intensity="1.0" polarity="0" pos="NN" subjectivity="0.0"/> <!-- Austrian form of "Leute" -->
@@ -103,12 +104,95 @@ Important note on PoS tags: the source did not specify part-of-speech tags. The 
   <word confidence="1.0" form="infizierte" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
   <word confidence="1.0" form="österreich" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
   <word confidence="1.0" form="geimpfte" intensity="1.0" polarity="1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="geimpfter" intensity="1.0" polarity="1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="ungeimpfte" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="ungeimpfter" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
   <word confidence="1.0" form="ich" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="du" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
   <word confidence="1.0" form="er" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
   <word confidence="1.0" form="sie" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
   <word confidence="1.0" form="es" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
   <word confidence="1.0" form="wir" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
   <word confidence="1.0" form="ihr" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="nachweis" intensity="1.0" polarity="-0.25" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="behandlung" intensity="1.0" polarity="-0.25" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="kosten" intensity="1.0" polarity="-0.5" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="staat" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="euro" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="bereich" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="formel_1" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="sport" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="wintersport" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="sommersport" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="sportart" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="wintersportart" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="sommersportart" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="redditer" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/> <!-- eingedeutscht: Redditor -->
+  <word confidence="1.0" form="redditor" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/> <!-- eingedeutscht: Redditor -->
+  <word confidence="1.0" form="arsch" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="marken" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="geschäftspartner" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="rauch" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/> <!-- Brand in Austria -->
+  <word confidence="1.0" form="fruchtsaft" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="servus" intensity="1.0" polarity="0.5" pos="NN" subjectivity="0.0"/> <!-- Greeting -->
+  <word confidence="1.0" form="tv" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="weg" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="werbekunde" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="medien" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="pranger" intensity="1.0" polarity="-0.5" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="satire" intensity="1.0" polarity="-0.5" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="intensivsystem" intensity="1.0" polarity="-0.5" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="intensiv" intensity="1.0" polarity="-0.5" pos="NN" subjectivity="0.0"/> <!-- short form of Intensivsystem -->
+  <word confidence="1.0" form="trader" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="sars" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="cov" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="cov19" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="steuersatz" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="erreger" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="regierungsmitglied" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="schularbeiten" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="schutz" intensity="1.0" polarity="1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="dame" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="herr" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="nadel" intensity="1.0" polarity="-0.25" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="risiko" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="risikoabwägung" intensity="1.0" polarity="-0.25" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="lockdown" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="sorry" intensity="1.0" polarity="0.5" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="lust" intensity="1.0" polarity="0.5" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="spaltung" intensity="1.0" polarity="-0.5" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="covidioten" intensity="1.0" polarity="-0.5" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="schwurbler" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="schwurblerdemo" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="infektion" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="tod" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="todesfälle" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="todesfall" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="gulag" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="demo" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="corona" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="leugner" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="coronaleugner" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="covidleugner" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="minus" intensity="1.0" polarity="-0.25" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="oof" intensity="1.0" polarity="-0.25" pos="NN" subjectivity="0.0"/> <!-- like sheesh -->
+  <word confidence="1.0" form="sheesh" intensity="1.0" polarity="-0.25" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="wichser" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="beerdigung" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="krankenhaus" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="cluster" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="coronacluster" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="spreader" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="super_spreader" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="superspreader" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="superspreaderevent" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="spreaderevent" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="kontaktfahndung" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="fahndung" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="coronaparty" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="covidparty" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="cluster" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="nein" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
   <!-- Verbs -->
   <word confidence="1.0" form="einführen" intensity="1.0" polarity="0.0" pos="VB" subjectivity="0.0"/>
   <word confidence="1.0" form="kosten" intensity="1.0" polarity="-0.5" pos="VB" subjectivity="0.0"/>
@@ -122,16 +206,48 @@ Important note on PoS tags: the source did not specify part-of-speech tags. The 
   <word confidence="1.0" form="sein" intensity="1.0" polarity="0.0" pos="VB" subjectivity="0.0"/>
   <word confidence="1.0" form="verlor" intensity="1.0" polarity="-1.0" pos="VB" subjectivity="0.0"/>
   <word confidence="1.0" form="verloren" intensity="1.0" polarity="-1.0" pos="VB" subjectivity="0.0"/>
-  <word confidence="1.0" form="brauchen" intensity="1.0" polarity="0.0" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="brauchen" intensity="1.0" polarity="-0.5" pos="VB" subjectivity="0.0"/>
+  <!--<word confidence="1.0" form="brauche" intensity="1.0" polarity="-0.5" pos="VB" subjectivity="0.0"/>-->
+  <word confidence="1.0" form="werden" intensity="1.0" polarity="0.0" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="müssen" intensity="1.0" polarity="-0.5" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="gehen" intensity="1.0" polarity="0.0" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="auffallen" intensity="1.0" polarity="0.0" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="tun" intensity="1.0" polarity="0.0" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="prangern" intensity="1.0" polarity="-0.5" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="anprangern" intensity="1.0" polarity="-0.5" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="leiten" intensity="1.0" polarity="0.0" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="weiterleiten" intensity="1.0" polarity="0.0" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="abzustellen" intensity="1.0" polarity="0.0" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="abstellen" intensity="1.0" polarity="0.0" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="aufeinanderprallen" intensity="1.0" polarity="-1.0" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="stämmen" intensity="1.0" polarity="-0.25" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="aufzuscheinen" intensity="1.0" polarity="0.0" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="erregen" intensity="1.0" polarity="-0.5" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="geschissen" intensity="1.0" polarity="-1.0" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="gemessen" intensity="1.0" polarity="0.0" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="stehen" intensity="1.0" polarity="0.0" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="infizieren" intensity="1.0" polarity="-1.0" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="sterben" intensity="1.0" polarity="-1.0" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="stirb" intensity="1.0" polarity="-1.0" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="fehlen" intensity="1.0" polarity="-0.5" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="impfen" intensity="1.0" polarity="0.5" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="schwurbel" intensity="1.0" polarity="-1.0" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="schwurbelen" intensity="1.0" polarity="-1.0" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="sudern" intensity="1.0" polarity="-1.0" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="anstecken" intensity="1.0" polarity="-1.0" pos="VB" subjectivity="0.0"/>
   <!-- Other -->
   <word confidence="1.0" form="gegen" intensity="1.0" polarity="-0.5" pos="JJ" subjectivity="0.0"/>
-  <word confidence="1.0" form="wsl" intensity="1.0" polarity="-0.5" pos="JJ" subjectivity="0.0"/> <!-- short form of "wahrscheinlich" -->
-  <word confidence="1.0" form="vollkomm" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/> <!-- lambda form of "vollkommen" -->
+  <word confidence="1.0" form="wahrscheinlich" intensity="1.0" polarity="0.5" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="wsl" intensity="1.0" polarity="0.5" pos="JJ" subjectivity="0.0"/> <!-- short form of "wahrscheinlich" -->
+  <word confidence="1.0" form="vollkomm" intensity="1.0" polarity="0.5" pos="JJ" subjectivity="0.0"/> <!-- lambda form of "vollkommen" -->
   <word confidence="1.0" form="sowas" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
   <word confidence="1.0" form="usw" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/> <!-- short form of "und so weiter" -->
-  <word confidence="1.0" form="mittlerweilen" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/> <!-- no idea why but somehow "mittlerweile" -->
+  <word confidence="1.0" form="und_so_weiter" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="mittlerweile" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="mittlerweilen" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/> <!-- false lemmatizing of "mittlerweile" -->
   <word confidence="1.0" form="kontrollierbar" intensity="1.0" polarity="0.5" pos="JJ" subjectivity="0.0"/>
   <word confidence="1.0" form="kein" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="nicht" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
   <word confidence="1.0" form="ein" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
   <word confidence="1.0" form="wen" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/> <!-- https://de.wikipedia.org/wiki/W-Wort -->
   <word confidence="1.0" form="wer" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
@@ -171,6 +287,84 @@ Important note on PoS tags: the source did not specify part-of-speech tags. The 
   <word confidence="1.0" form="woneben" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
   <word confidence="1.0" form="wann" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/> <!-- https://de.wikipedia.org/wiki/W-Wort -->
   <word confidence="1.0" form="unterbezahlt" intensity="1.0" polarity="-1.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="neu" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="horrende" intensity="1.0" polarity="-1.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="bisschen" intensity="1.0" polarity="0.5" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="spurig" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="einspurig" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="zweispurig" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="dreispurig" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="vierspurig" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="sechspurig" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="achtspurig" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="genannt" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="mmn" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/> <!-- short form of "Meiner Meinung nach" -->
+  <word confidence="1.0" form="einmal" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="zweimal" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="dreimal" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="wiederum" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="sinnvoll" intensity="1.0" polarity="0.25" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="sinnvoller" intensity="1.0" polarity="0.25" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="sinnvollere" intensity="1.0" polarity="0.25" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="pur" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="leider" intensity="1.0" polarity="-0.75" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="inklusiv" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="undurchsichtigen" intensity="1.0" polarity="-1.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="geschissene" intensity="1.0" polarity="-1.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="anspruchsvoll" intensity="1.0" polarity="-0.5" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="beruhigt" intensity="1.0" polarity="1.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="wackelig" intensity="1.0" polarity="-0.5" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="verständlich" intensity="1.0" polarity="0.5" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="glauben" intensity="1.0" polarity="0.5" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="wissen" intensity="1.0" polarity="0.5" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="ablehnen" intensity="1.0" polarity="-0.5" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="lahm" intensity="1.0" polarity="-0.5" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="elendig" intensity="1.0" polarity="-0.5" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="fehl" intensity="1.0" polarity="-0.5" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="wirr" intensity="1.0" polarity="-0.5" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="irre" intensity="1.0" polarity="-0.5" pos="JJ" subjectivity="0.0"/>
+  <!-- Stop words -->
+  <word confidence="1.0" form="man" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="sich" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="vor" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="es" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="die" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="das" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="der" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="uns" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="unser" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="und" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="noch" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="in" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="ins" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="weil" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="aber" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="da" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="ja" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="sogar" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="hier" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="auch" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="jetzt" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="ob" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="mit" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="weiter" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="denn" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="doch" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="den" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="nur" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="bei" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="paar" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="dem" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="am" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="vorbei" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="zu" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="wenn" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="dann" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="von" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="an" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="auf" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="so" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="schon" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
   <!-- Original Entries from here on below -->
   <word confidence="1.0" form="AIDS" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
   <word confidence="1.0" form="Abart" intensity="1.0" polarity="-0.7" pos="NN" subjectivity="0.0"/>

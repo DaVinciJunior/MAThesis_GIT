@@ -2053,7 +2053,14 @@ class Sentiment(lazydict):
         # A string of words.
         # Sentiment("a horrible movie") => (-0.6, 1.0)
         elif isinstance(s, basestring):
-            a = self.assessments(((w.lower(), None) for w in " ".join(self.tokenizer(s)).split()), negation)
+            new_s = []
+            for token in s.split():
+                # Only lemmatize if it is actually necessary
+                if not token in s:
+                    token = _lemmatizer.lemmatize(token)[0][0].lower()
+                new_s.append(token)
+            s = new_s
+            a = self.assessments(((w.lower(), None) for w in " ".join(s).split()), negation)
         # A pattern.en.Text.
         elif hasattr(s, "sentences"):
             a = self.assessments(((w.lemma or w.string.lower(), w.pos[:2]) for w in chain(*s)), negation)

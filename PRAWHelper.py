@@ -49,6 +49,10 @@ def prettyPrinterComments(comment, sentiment, prefix):
         print(prefix + "BOT Message ignored...")
         return
 
+    if user == "NON-GERMAN-COMMENT":
+        print(prefix + "Non German Message ignored...")
+        return
+
     print(prefix + "<" + id + ">" + user + "[" + score + "]" + "{" + time + "}" + text, end='\n')
     if sentiment != None:
         print(prefix + str(sentiment))
