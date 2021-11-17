@@ -21,6 +21,7 @@ file_handler.setLevel(logging.INFO)
 logger.addHandler(file_handler)
 
 unknown_words = {}
+possible_mappings = {}
 
 def addWord(word):
     # only add word if consists of following regex - otherwise it is just a random character, number, ...
@@ -31,8 +32,28 @@ def addWord(word):
         else:
             unknown_words[word] = 1
 
+def addPossibleMapping(word, mapping):
+    removeUnknownWordsBecauseOfMatch(word)
+
+    word = word.lower()
+    if word in possible_mappings.keys():
+        possible_mappings[word].add(mapping)
+    else:
+        possible_mappings[word] = {mapping}
+
+
+def removeUnknownWordsBecauseOfMatch(word):
+    # If we have at least one mapping for a word we remove it from the possible dialectal words
+    if word in unknown_words.keys():
+        del unknown_words[word]
+
+
 def log():
     # Remove duplicates via set()
     # Initialize lower unknown words
+    logger.info("------------------\nAll unknown words\n------------------")
     for word in unknown_words.keys():
         logger.info(word + ":" + str(unknown_words[word]))
+    logger.info("------------------\nDialectal Mappings\n------------------")
+    for word in possible_mappings.keys():
+        logger.info(word + "->" + str(possible_mappings[word]))
