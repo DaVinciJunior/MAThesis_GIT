@@ -14,60 +14,23 @@ from langdetect import detect
 
 REGEX_URL_PARSER = r"((\w+:\/{2}[\d\w-]+(\.[\d\w-]+)*(?:(?:\/[^\s/]*))*)|((mailto:)?[\d\w-]+@[\d\w-]+\.[\d\w-]+)|((www.)[\d\w-]+\.[\d\w-]+))(\/\S+)?"
 STOP_WORDS = [
-    "man",
-    "sich",
-    "vor",
-    "es",
-    "werden",
-    "ein",
-    "die",
-    "das",
-    "der",
-    "uns",
-    "unser",
-    "und",
-    "noch",
-    "in",
-    "ins", #short form of "in das"
-    "weil",
-    "aber",
-    "da",
-    "ja",
-    "sogar",
-    "hier",
-    "auch",
-    "jetzt",
-    "ich",
-    "du",
-    "er",
-    "sie",
-    "es",
-    "wir",
-    "ihr"
-    "ob",
-    "mit",
-    "weiter",
-    "denn",
-    "doch",
-    "sein",
-    "den",
-    "nur",
-    "bei",
-    "paar",
-    "dem",
-    "am",
-    "vorbei",
-    "zu",
-    "wenn",
-    "dann",
-    "von",
-    "an",
-    "auf",
-    "so",
-    "schon"
+    "man", "sich", "vor", "es", "werden", "ein", "die", "das", "dass", "der", "uns", "unser", "und", "noch", "in", "ins", #short form of "in das"
+    "weil", "aber", "da", "ja", "sogar", "hier", "auch", "jetzt", "ich", "du", "er", "sie", "es", "wir", "ihr", "ob",
+    "mit", "weiter", "denn", "sein", "den", "nur", "bei", "paar", "dem", "am", "vorbei", "zu", "wenn", "dann",
+    "von", "an", "auf", "so", "schon", "ist", "sind", "für", "vom", "im", "oder", "wen", "wer", "was", "wessen",
+    "weshalb", "warum", "wieso", "welche", "welcher", "welches", "wem", "weswegen", "wie", "wieweit", "wie_weit",
+    "wie_viel", "wofür", "wozu", "womit", "wodurch", "worum", "worüber", "wobei", "wovon", "woraus", "wo", "wogegen",
+    "wohin", "woher", "woran", "worin", "worauf", "worunter", "wovor", "wohinter", "woneben", "wann", "als", "wird",
+    "mir", "mal", "halt", "aus", "mich", "war", "alle", "um", "immer", "nach", "bin", "also", "zum", "dir", "über",
+    "wieder", "würden", "würde", "dies", "diese", "mein", "meine", "damit", "eh", "ihm", "ihn", "selbst", "bis", "andere",
+    "anderen", "durch", "dazu", "zur", "zum", "eigentlich", "dafür", "gar", "wegen", "seit", "dort", "dein", "deine",
+    "unter", "denen", "dich", "gleich", "grunde"
 ]
 
 def preprocessComments(comment):
+    # Return if body is for some reason empty...
+    if comment.body is None:
+        return ""
     # Remove bot replies!
     if comment.author is not None and comment.author.name is not None and comment.body is not None:
         if "bot" in comment.author.name.lower() or "b0t" in comment.author.name.lower():
@@ -75,10 +38,12 @@ def preprocessComments(comment):
             comment.body = ''
             return comment
     # Remove non-german texts
-    elif detect(comment.body) != 'de':
-        comment.author.name = 'NON-GERMAN-COMMENT'
-        comment.body = ''
-        return comment
+    elif comment.body is not None:
+        if detect(comment.body) != 'de':
+            if comment.author is not None:
+                comment.author.name = 'NON-GERMAN-COMMENT'
+            comment.body = ''
+            return comment
 
     # UNNECESSARY!!! Already escaped -> Replace unnecessary escaped characters as this otherwise makes problems when analyzing
     # comment.body = comment.body.replace("\"", "\\\"")

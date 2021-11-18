@@ -56,6 +56,7 @@ replacements = [
     ["n$", "en"],       # e.g. "reissn" -> "reissen"
     ["n$", "ne"],       # e.g. "scheun" -> "scheune"
     ["^na$", "nein"],
+    ["^nimmer$", "nicht"], # technically "nicht mehr" but it is sufficient as it is
     ### O ###
     ["o", "a"],         # e.g. "hob" -> "habe"
     ["o", "i"],         # e.g. "hoid" -> "halte", "Hoid des amol" -> "Halte das mal"
@@ -67,6 +68,8 @@ replacements = [
     ### R ###
     ### S ###
     ["s$", "st"],       # e.g. "is" -> "ist"
+    ["ss", "ß"],
+    ["ß", "ss"],
     ### T ###
     ["t$", "te"],       # e.g. "hoit" -> "halte", "Hoit des amol" -> "Halte das mal"
     ["t$", "n"],        # e.g. "kostet" -> "kosten", should technically be fixed by lemmatizer but it isn't unfortunately

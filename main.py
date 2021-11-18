@@ -9,7 +9,7 @@ from misc import NonUnicodeEmojis
 from sentUtils import getCorrectKeyForSentimentAnalysis, getLowerSentimentList, lemmatize
 
 if __name__ == "__main__":
-    PRAWHelper.get_n_LatestSubmissionsAndCommentsAndExecuteFunction(n=1000, func=sentHelper.sent)
+    PRAWHelper.get_n_LatestSubmissionsAndCommentsAndExecuteFunction(n=100, func=sentHelper.sent)
 
     # tests = [
     #     # "Impfpflicht ist kein Muss",
