@@ -57,11 +57,21 @@ def preprocessComments(comment):
     comment = NonUnicodeEmojis.demojize(comment)
     return comment
 
+def preprocessStrings(string):
+    # Filter out urls (http, https, ftp, mailto, www., ...)
+    string = re.sub(pattern=REGEX_URL_PARSER, repl="", string=string)
+    # Replace emojis
+    string = emoji.demojize(string)
+    # Replace Non-Unicode emojis
+    string = NonUnicodeEmojis.demojize(string)
+    return string
+
 def sent(text):
     # Replace characters with their appropriate counter-part for analyzing sentiment
     text = re.sub(pattern="“|„|”", repl="\"", string=text)
     text = re.sub(pattern="’|`", repl="\'", string=text)
 
+    text = preprocessStrings(text)
     # Filter out stop words
     filtered_text = ""
     for token in TextBlob(text).words:
