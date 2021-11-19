@@ -971,6 +971,21 @@ Important note on PoS tags: the source did not specify part-of-speech tags. The 
   <word confidence="1.0" form="entwurmungsmittel" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
   <word confidence="1.0" form="abführmittel" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
   <word confidence="1.0" form="scheiß" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="verschwörung" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="verschwörungstheorie" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="verschwörungstheorien" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="realität" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="mitte" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="deutschland" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="cousin" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="einzige" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="einziger" intensity="1.0" polarity="0.0" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="scherz" intensity="1.0" polarity="0.5" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="information" intensity="1.0" polarity="0.25" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="leberkäs" intensity="1.0" polarity="0.25" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="leberkäse" intensity="1.0" polarity="0.25" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="leberkässemmel" intensity="1.0" polarity="0.25" pos="NN" subjectivity="0.0"/>
+  <word confidence="1.0" form="bestechung" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
   <!-- Verbs -->
   <word confidence="1.0" form="einführen" intensity="1.0" polarity="0.0" pos="VB" subjectivity="0.0"/>
   <word confidence="1.0" form="kosten" intensity="1.0" polarity="-0.5" pos="VB" subjectivity="0.0"/>
@@ -1034,6 +1049,12 @@ Important note on PoS tags: the source did not specify part-of-speech tags. The 
   <word confidence="1.0" form="liegen" intensity="1.0" polarity="0.0" pos="VB" subjectivity="0.0"/>
   <word confidence="1.0" form="verschwinden" intensity="1.0" polarity="0.0" pos="VB" subjectivity="0.0"/>
   <word confidence="1.0" form="scheißen" intensity="1.0" polarity="-1.0" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="haben" intensity="1.0" polarity="0.75" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="melden" intensity="1.0" polarity="-0.25" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="finden" intensity="1.0" polarity="0.25" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="bauen" intensity="1.0" polarity="0.25" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="treffen" intensity="1.0" polarity="0.0" pos="VB" subjectivity="0.0"/>
+  <word confidence="1.0" form="führen" intensity="1.0" polarity="0.0" pos="VB" subjectivity="0.0"/>
   <!-- Other -->
   <word confidence="1.0" form="gegen" intensity="1.0" polarity="-0.5" pos="JJ" subjectivity="0.0"/>
   <word confidence="1.0" form="wahrscheinlich" intensity="1.0" polarity="0.5" pos="JJ" subjectivity="0.0"/>
@@ -1143,7 +1164,12 @@ Important note on PoS tags: the source did not specify part-of-speech tags. The 
   <word confidence="1.0" form="ungeimpft" intensity="1.0" polarity="-1.0" pos="JJ" subjectivity="0.0"/>
   <word confidence="1.0" form="geimpft" intensity="1.0" polarity="1.0" pos="JJ" subjectivity="0.0"/>
   <word confidence="1.0" form="fake" intensity="1.0" polarity="-1.0" pos="JJ" subjectivity="0.0"/>
-  <word confidence="1.0" form="scheiß" intensity="1.0" polarity="-1.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="scheiße" intensity="1.0" polarity="-1.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="selbstverschuldet" intensity="1.0" polarity="-1.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="einzig" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="scherzhaft" intensity="1.0" polarity="0.5" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="alt" intensity="1.0" polarity="-0.5" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="sonst" intensity="1.0" polarity="-0.5" pos="JJ" subjectivity="0.0"/>
   <!-- Stop words -->
   <word confidence="1.0" form="man" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
   <word confidence="1.0" form="sich" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
@@ -1230,6 +1256,9 @@ Important note on PoS tags: the source did not specify part-of-speech tags. The 
   <word confidence="1.0" form="dich" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
   <word confidence="1.0" form="gleich" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
   <word confidence="1.0" form="grunde" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="aus" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="ab" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
+  <word confidence="1.0" form="etwas" intensity="1.0" polarity="0.0" pos="JJ" subjectivity="0.0"/>
   <!-- Original Entries from here on below -->
   <word confidence="1.0" form="AIDS" intensity="1.0" polarity="-1.0" pos="NN" subjectivity="0.0"/>
   <word confidence="1.0" form="Abart" intensity="1.0" polarity="-0.7" pos="NN" subjectivity="0.0"/>

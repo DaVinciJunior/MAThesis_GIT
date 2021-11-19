@@ -22,6 +22,7 @@ replacements = [
     ["a$", "r"],        # e.g. "voa" -> "vor", "Ka bia voa via" -> "Kein Bier vor vier"
     ["^a", ""],         # e.g. "amol" -> "mal", "Hold des amol" -> "Halte das mal"
     ["ae", "ä"],
+    ["a", "ä"],         # e.g. "leberkas" -> "leberkäs"
     ["^aufg", "aufge"], # e.g. "aufgmacht" -> "aufgemacht"
     ### B ###
     ["b$", "be"],       # e.g. "hob" -> "habe"
@@ -29,6 +30,7 @@ replacements = [
     ### D ###
     ["d$", "te"],       # e.g. "hold" -> "halte", "Hold des amol" -> "Halte das mal"
     ["d$", "t"],        # e.g. "hold" -> "halt"
+    ["d$", "den"],      # e.d. "meld" -> "melden"
     ### E ###
     ["e$", "ie"],       # e.g. "de" -> "die", "De koaten hob i scho" -> "Die Karte habe ich schon"
     ["e", "ee"],        # e.g. "shesh" -> "sheesh"
@@ -57,6 +59,7 @@ replacements = [
     ["n$", "ne"],       # e.g. "scheun" -> "scheune"
     ["^na$", "nein"],
     ["^nimmer$", "nicht"], # technically "nicht mehr" but it is sufficient as it is
+    ["^ne$", "ein"],
     ### O ###
     ["o", "a"],         # e.g. "hob" -> "habe"
     ["o", "i"],         # e.g. "hoid" -> "halte", "Hoid des amol" -> "Halte das mal"
@@ -67,9 +70,11 @@ replacements = [
     ### Q ###
     ### R ###
     ### S ###
+    ["s$", "se"],       # e.g. "scheiß" -> "scheiße"
     ["s$", "st"],       # e.g. "is" -> "ist"
     ["ss", "ß"],
     ["ß", "ss"],
+    ["^schmäh$", "scherz"],
     ### T ###
     ["t$", "te"],       # e.g. "hoit" -> "halte", "Hoit des amol" -> "Halte das mal"
     ["t$", "n"],        # e.g. "kostet" -> "kosten", should technically be fixed by lemmatizer but it isn't unfortunately

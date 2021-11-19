@@ -24,7 +24,7 @@ STOP_WORDS = [
     "mir", "mal", "halt", "aus", "mich", "war", "alle", "um", "immer", "nach", "bin", "also", "zum", "dir", "über",
     "wieder", "würden", "würde", "dies", "diese", "mein", "meine", "damit", "eh", "ihm", "ihn", "selbst", "bis", "andere",
     "anderen", "durch", "dazu", "zur", "zum", "eigentlich", "dafür", "gar", "wegen", "seit", "dort", "dein", "deine",
-    "unter", "denen", "dich", "gleich", "grunde"
+    "unter", "denen", "dich", "gleich", "grunde", "aus", "ab", "etwas"
 ]
 
 def preprocessComments(comment):
@@ -38,12 +38,11 @@ def preprocessComments(comment):
             comment.body = ''
             return comment
     # Remove non-german texts
-    elif comment.body is not None:
-        if detect(comment.body) != 'de':
-            if comment.author is not None:
-                comment.author.name = 'NON-GERMAN-COMMENT'
-            comment.body = ''
-            return comment
+    if detect(comment.body) != 'de':
+        if comment.author is not None:
+            comment.author.name = 'NON-GERMAN-COMMENT'
+        comment.body = ''
+        return comment
 
     # UNNECESSARY!!! Already escaped -> Replace unnecessary escaped characters as this otherwise makes problems when analyzing
     # comment.body = comment.body.replace("\"", "\\\"")
