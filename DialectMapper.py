@@ -34,6 +34,7 @@ replacements = [
     ### E ###
     ["e$", "ie"],       # e.g. "de" -> "die", "De koaten hob i scho" -> "Die Karte habe ich schon"
     ["e", "ee"],        # e.g. "shesh" -> "sheesh"
+    ["ee", "e"],        # e.g. "sheeeesh" -> "sheesh"
     ["e", "i"],         # e.g. "werd" -> "wird"
     ["e", "ö"],         # e.g. "bled" -> "blöd", "A blede Gschicht" -> "Eine blöde Geschichte"
     ["e$", "en"],       # e.g. "brauche" -> "brauchen", should technically be fixed by lemmatizer but it isn't unfortunately
@@ -42,8 +43,10 @@ replacements = [
     ["^g", "ge"],       # e.g. "gongen" -> "gegangen"
     ["^g", ""],
     ["go", "geg"],      # e.g. "gongen" -> "gegangen"
+    ["g$", "ge"],       # e.g. "solang" -> "solange"
     ### H ###
     ["h$", "he"],       # e.g. "brauch" -> "brauche"
+    ["h$", "ht"],       # e.g. "nit" -> "nicht"
     ### I ###
     ["ia$", "ür"],      # e.g. "tia" -> "tür"
     ["ia", "ihr"],      # e.g. "ia" -> "ihr", "Ia seids jo irr" -> "Ihr seid ja irre"
@@ -64,11 +67,13 @@ replacements = [
     ["o", "a"],         # e.g. "hob" -> "habe"
     ["o", "i"],         # e.g. "hoid" -> "halte", "Hoid des amol" -> "Halte das mal"
     ["o", "oo"],        # e.g. "of" -> "oof"
+    ["oo", "o"],        # e.g. "ooof" -> "oof"
     ["oa", "ar"],       # e.g. "koatn" -> "Karte", "De koaten hob i scho" -> "Die Karte habe ich schon"
     ["oe", "ö"],
     ### P ###
     ### Q ###
     ### R ###
+    ["rl$", ""],        # e.g. "zungenspitzerl" -> "zungenspitze"
     ### S ###
     ["s$", "se"],       # e.g. "scheiß" -> "scheiße"
     ["s$", "st"],       # e.g. "is" -> "ist"

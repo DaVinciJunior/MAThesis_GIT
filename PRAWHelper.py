@@ -128,6 +128,23 @@ def get_n_LatestSubmissionsAndCommentsAndExecuteFunction(n=100, func=None):
             outputAllReplies(top_level_comment, func, "\t\t")
         print("\n\n---\n\n")
 
+def get_n_LatestSubmissionsInHotAndCommentsAndExecuteFunction(n=100, func=None):
+    reddit = login()
+    subreddit = reddit.subreddit("Austria")
+    for submission in subreddit.hot(limit=n):
+        print("--------------------------")
+        prettyPrinterSubmissions(submission)
+        print("------------------------------")
+        submission.comments.replace_more(limit=0)
+        for top_level_comment in submission.comments:
+            top_level_comment = sentHelper.preprocessComments(top_level_comment)
+            sentiment = None
+            if (func != None):
+                sentiment = func(top_level_comment.body)
+            prettyPrinterComments(top_level_comment, sentiment, "\t")
+            outputAllReplies(top_level_comment, func, "\t\t")
+        print("\n\n---\n\n")
+
 
     ################### FAILED EXPERIMENTS ###################
 
