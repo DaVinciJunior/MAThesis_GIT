@@ -1,4 +1,5 @@
 import os
+import UnknownWordsLogger
 
 from textblob_de import PatternParserLemmatizer, NLTKPunktTokenizer
 from textblob_de.sentiments import Sentiment
@@ -34,3 +35,12 @@ def getLowerSentimentList():
 
 def lemmatize(word):
     return _lemmatizer.lemmatize(word)[0][0].lower()
+
+def checkIfWordIsKnown(word):
+    raw = word.lower()
+    lemmatized = lemmatize(word).lower()
+    if raw in getLowerSentimentList() or lemmatized in getLowerSentimentList():
+        return 1
+    else:
+        UnknownWordsLogger.addWord(raw)
+        return 0

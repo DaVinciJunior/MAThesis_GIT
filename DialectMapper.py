@@ -67,6 +67,7 @@ replacements = [
     ["o", "a"],         # e.g. "hob" -> "habe"
     ["o", "i"],         # e.g. "hoid" -> "halte", "Hoid des amol" -> "Halte das mal"
     ["o", "oo"],        # e.g. "of" -> "oof"
+    ["o", "och"],       # e.g. "no" -> "noch"
     ["oo", "o"],        # e.g. "ooof" -> "oof"
     ["oa", "ar"],       # e.g. "koatn" -> "Karte", "De koaten hob i scho" -> "Die Karte habe ich schon"
     ["oe", "ö"],
@@ -77,6 +78,7 @@ replacements = [
     ### S ###
     ["s$", "se"],       # e.g. "scheiß" -> "scheiße"
     ["s$", "st"],       # e.g. "is" -> "ist"
+    ["s$", "ss"],       # e.g. "muas" -> "muss"
     ["ss", "ß"],
     ["ß", "ss"],
     ["^schmäh$", "scherz"],
@@ -86,6 +88,7 @@ replacements = [
     ["ts$", "t"],       # e.g. "gibts" -> "gibt"
     ### U ###
     ["u", "o"],         # e.g. "sunsd" -> "sonst"
+    ["ua", "u"],        # e.g. "muass" -> "muss"
     ["ue", "ü"],
     ["ui$", "oll"],     # e.g. "vui" -> "voll", "Da film gfoit ma vui" -> "Der Film gefällt mir voll"
     ["ü$", "iel"],      # e.g. "vü" -> "viel, "Es kost halt so vü" -> "Es kostet halt so viel"

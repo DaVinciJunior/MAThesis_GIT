@@ -24,6 +24,7 @@ def prettyPrinterComments(comment, sentiment, prefix):
     score = ""
     time = ""
     text = ""
+    num_replies = ""
     try:
         id = str(comment.id)
     except:
@@ -44,6 +45,10 @@ def prettyPrinterComments(comment, sentiment, prefix):
         text = comment.body.replace("\n", "\n" + prefix)
     except:
         text = "Faulty-Textbody"
+    try:
+        num_replies = str(comment.replies.__len__())
+    except:
+        num_replies = "Faulty-Num-Replies"
 
     if user == "BOT":
         print(prefix + "BOT Message ignored...")
@@ -53,7 +58,7 @@ def prettyPrinterComments(comment, sentiment, prefix):
         print(prefix + "Non German Message ignored...")
         return
 
-    print(prefix + "<" + id + ">" + user + "[" + score + "]" + "{" + time + "}" + text, end='\n')
+    print(prefix + "<" + id + ">" + user + "[" + score + "]" + "{" + time + "}" + "#" + num_replies + " " + text, end='\n')
     if sentiment != None:
         print(prefix + str(sentiment))
 
@@ -97,12 +102,23 @@ def prettyPrinterSubmissions(submission):
 
     print("<" + id + ">" + user + "[" + score + "-" + upvote_ratio + "]" + "{" + time + "}" + title + " #" + numberOfComments)
 
-def outputAllReplies(comment, func, prefix):
+def outputAllReplies(comment, func, prefix, preprocess=True):
     for reply in comment.replies:
-        reply = sentHelper.preprocessComments(reply)
+        if preprocess:
+            reply = sentHelper.preprocessComments(reply)
         sentiment = None
         if func != None:
             sentiment = func(comment.body)
+        prettyPrinterComments(reply, sentiment, prefix)
+        outputAllReplies(reply, func, prefix + "\t")
+
+def outputAllRepliesFeatureFunc(comment, func, prefix, preprocess=True):
+    for reply in comment.replies:
+        if preprocess:
+            reply = sentHelper.preprocessComments(reply)
+        sentiment = None
+        if func != None:
+            sentiment = func(reply.body, reply.score, reply.replies.__len__())
         prettyPrinterComments(reply, sentiment, prefix)
         outputAllReplies(reply, func, prefix + "\t")
 
@@ -111,7 +127,7 @@ def get_n_LatestSubmissionsAndComments(n=100):
     get_n_LatestSubmissionsAndCommentsAndExecuteFunction(n=n)
 
 
-def get_n_LatestSubmissionsAndCommentsAndExecuteFunction(n=100, func=None):
+def get_n_LatestSubmissionsAndCommentsAndExecuteFunction(n=100, func=None, preprocess=True):
     reddit = login()
     subreddit = reddit.subreddit("Austria")
     for submission in subreddit.new(limit=n):
@@ -120,15 +136,16 @@ def get_n_LatestSubmissionsAndCommentsAndExecuteFunction(n=100, func=None):
         print("------------------------------")
         submission.comments.replace_more(limit=0)
         for top_level_comment in submission.comments:
-            top_level_comment = sentHelper.preprocessComments(top_level_comment)
+            if preprocess:
+                top_level_comment = sentHelper.preprocessComments(top_level_comment)
             sentiment = None
             if (func != None):
                 sentiment = func(top_level_comment.body)
             prettyPrinterComments(top_level_comment, sentiment, "\t")
-            outputAllReplies(top_level_comment, func, "\t\t")
+            outputAllReplies(top_level_comment, func, "\t\t", preprocess)
         print("\n\n---\n\n")
 
-def get_n_LatestSubmissionsInHotAndCommentsAndExecuteFunction(n=100, func=None):
+def get_n_LatestSubmissionsInHotAndCommentsAndExecuteFunction(n=100, func=None, preprocess=True):
     reddit = login()
     subreddit = reddit.subreddit("Austria")
     for submission in subreddit.hot(limit=n):
@@ -137,12 +154,31 @@ def get_n_LatestSubmissionsInHotAndCommentsAndExecuteFunction(n=100, func=None):
         print("------------------------------")
         submission.comments.replace_more(limit=0)
         for top_level_comment in submission.comments:
-            top_level_comment = sentHelper.preprocessComments(top_level_comment)
+            if preprocess:
+                top_level_comment = sentHelper.preprocessComments(top_level_comment)
             sentiment = None
             if (func != None):
                 sentiment = func(top_level_comment.body)
             prettyPrinterComments(top_level_comment, sentiment, "\t")
-            outputAllReplies(top_level_comment, func, "\t\t")
+            outputAllReplies(top_level_comment, func, "\t\t", preprocess)
+        print("\n\n---\n\n")
+
+def get_n_LatestSubmissionsAndCommentsAndExecuteFeatureFunction(n=100, func=None, preprocess=True):
+    reddit = login()
+    subreddit = reddit.subreddit("Austria")
+    for submission in subreddit.new(limit=n):
+        print("--------------------------")
+        prettyPrinterSubmissions(submission)
+        print("------------------------------")
+        submission.comments.replace_more(limit=0)
+        for top_level_comment in submission.comments:
+            if preprocess:
+                top_level_comment = sentHelper.preprocessComments(top_level_comment)
+            sentiment = None
+            if (func != None):
+                sentiment = func(top_level_comment.body, top_level_comment.score, top_level_comment.replies.__len__())
+            prettyPrinterComments(top_level_comment, sentiment, "\t")
+            outputAllRepliesFeatureFunc(top_level_comment, func, "\t\t", preprocess)
         print("\n\n---\n\n")
 
 
