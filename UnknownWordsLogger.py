@@ -4,7 +4,7 @@ import re
 
 from datetime import datetime
 
-path_to_logs = 'B:\\Dropbox\\MA\\GIT\\logs'
+path_to_logs = './logs/'
 
 today = datetime.now()
 formated_today = today.strftime('%d_%m_%Y_%H_%M')

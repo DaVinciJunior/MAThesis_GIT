@@ -11,7 +11,7 @@ from sentUtils import getCorrectKeyForSentimentAnalysis, getLowerSentimentList, 
 from featureUtils import getFeatureSetForText
 
 if __name__ == "__main__":
-    n = 20
+    n = 1000
     started = datetime.datetime.now()
     print(">>>Starting with the " + str(n) + " newest submissions...<<<\n\n\n")
     PRAWHelper.get_n_LatestSubmissionsAndCommentsAndExecuteFeatureFunction(n=n, func=getFeatureSetForText, preprocess=False)

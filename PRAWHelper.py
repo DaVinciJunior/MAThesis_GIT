@@ -112,15 +112,15 @@ def outputAllReplies(comment, func, prefix, preprocess=True):
         prettyPrinterComments(reply, sentiment, prefix)
         outputAllReplies(reply, func, prefix + "\t")
 
-def outputAllRepliesFeatureFunc(comment, func, prefix, preprocess=True):
+def outputAllRepliesFeatureFunc(comment, func, prefix, preprocess=True, submission=None):
     for reply in comment.replies:
         if preprocess:
             reply = sentHelper.preprocessComments(reply)
         sentiment = None
         if func != None:
-            sentiment = func(reply.body, reply.score, reply.replies.__len__())
-        prettyPrinterComments(reply, sentiment, prefix)
-        outputAllReplies(reply, func, prefix + "\t")
+            sentiment = func(reply.body, reply.score, reply.replies.__len__(), str(submission.id), str(reply.id))
+        # prettyPrinterComments(reply, sentiment, prefix)
+        outputAllRepliesFeatureFunc(reply, func, prefix, preprocess, submission)
 
 # default: n = 100
 def get_n_LatestSubmissionsAndComments(n=100):
@@ -167,19 +167,20 @@ def get_n_LatestSubmissionsAndCommentsAndExecuteFeatureFunction(n=100, func=None
     reddit = login()
     subreddit = reddit.subreddit("Austria")
     for submission in subreddit.new(limit=n):
-        print("--------------------------")
-        prettyPrinterSubmissions(submission)
-        print("------------------------------")
+    # for submission in subreddit.hot(limit=n):
+        # print("--------------------------")
+        # prettyPrinterSubmissions(submission)
+        # print("------------------------------")
         submission.comments.replace_more(limit=0)
         for top_level_comment in submission.comments:
             if preprocess:
                 top_level_comment = sentHelper.preprocessComments(top_level_comment)
             sentiment = None
             if (func != None):
-                sentiment = func(top_level_comment.body, top_level_comment.score, top_level_comment.replies.__len__())
-            prettyPrinterComments(top_level_comment, sentiment, "\t")
-            outputAllRepliesFeatureFunc(top_level_comment, func, "\t\t", preprocess)
-        print("\n\n---\n\n")
+                sentiment = func(top_level_comment.body, top_level_comment.score, top_level_comment.replies.__len__(), str(submission.id), str(top_level_comment.id))
+            # prettyPrinterComments(top_level_comment, sentiment, "\t")
+            outputAllRepliesFeatureFunc(top_level_comment, func, "\t\t", preprocess, submission)
+        # print("\n\n---\n\n")
 
 
     ################### FAILED EXPERIMENTS ###################

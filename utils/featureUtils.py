@@ -1,9 +1,12 @@
 import re
 import math
+import os
+import csv
 
 from textblob_de import TextBlobDE as TextBlob
 from sentUtils import checkIfWordIsKnown
 from sentHelper import preprocessStrings
+from datetime import datetime
 
 file = open("./res/dialectalRegExs.txt", encoding="utf-8")
 # get dialectal regexes from list
@@ -13,10 +16,26 @@ file = open("./res/triggerWordsRegExs.txt", encoding="utf-8")
 # get trigger words from list
 trigger_regexes = file.read().split(",")
 
+today = datetime.now()
+formated_today = today.strftime('%d_%m_%Y_%H_%M')
+
+dir_path = "./logs/"
+filename = os.path.join(dir_path, formated_today + '.csv')
+file = open(filename, mode="w", encoding="utf-8", newline="")
+writer = csv.writer(file, delimiter =",", quoting=csv.QUOTE_MINIMAL, lineterminator="\n")
+writer.writerow(["link","text","number_of_words_that_start_with_a_capital_letter","number_of_capital_letters",
+                 "number_of_words","number_of_unknown_words","number_of_words_that_contain_dialectal_words",
+                 "average_word_length","max_word_length","min_word_length","average_number_of_words_per_sentence",
+                 "max_number_of_words_per_sentence","min_number_of_words_per_sentence","number_of_emojis",
+                 "average_number_of_emojis_per_sentence","number_of_urls","number_of_question_marks",
+                 "number_of_call_signs","number_of_dots","number_of_commas","number_of_digits",
+                 "number_of_sarcasm_indicators","number_of_trigger_words","upvotes","replies"])
+
 emoji_regex = ":(\S)+:"
 url_regex = r"((\w+:\/{2}[\d\w-]+(\.[\d\w-]+)*(?:(?:\/[^\s/]*))*)|((mailto:)?[\d\w-]+@[\d\w-]+\.[\d\w-]+)|((www.)[\d\w-]+\.[\d\w-]+))(\/\S+)?"
 
-def getFeatureSetForText(text, upvotes=0, replies=0):
+def getFeatureSetForText(text, upvotes=0, replies=0, submissionId=None, commentId=None):
+    writer = csv.writer(file)
     number_of_words_that_start_with_a_capital_letter = 0
     number_of_capital_letters = 0
     number_of_words = 0
@@ -85,6 +104,17 @@ def getFeatureSetForText(text, upvotes=0, replies=0):
         average_word_length = 0.0
         average_number_of_words_per_sentence = 0.0
         average_number_of_emojis_per_sentence = 0.0
+
+    formatted_text = re.sub("\r|\n","    ",text)
+    writer.writerow(["https://www.reddit.com/r/Austria/comments/" + submissionId + "/comment/" + commentId + "/",formatted_text,
+                     number_of_words_that_start_with_a_capital_letter,number_of_capital_letters,number_of_words,
+                     number_of_unknown_words,number_of_words_that_contain_dialectal_words,average_word_length,
+                     max_word_length,min_word_length,average_number_of_words_per_sentence,
+                     max_number_of_words_per_sentence,min_number_of_words_per_sentence,number_of_emojis,
+                     average_number_of_emojis_per_sentence,number_of_urls,number_of_question_marks,number_of_call_signs,
+                     number_of_dots,number_of_commas,number_of_digits,number_of_sarcasm_indicators,
+                     number_of_trigger_words,upvotes,replies])
+
     return number_of_words_that_start_with_a_capital_letter, number_of_capital_letters, number_of_words, \
            number_of_unknown_words, number_of_words_that_contain_dialectal_words, average_word_length, \
            max_word_length, min_word_length, average_number_of_words_per_sentence, max_number_of_words_per_sentence, \
