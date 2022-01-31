@@ -11,5 +11,5 @@ def show_score(X,Y,clf,title):
     disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=clf.classes_)
     disp.plot()
     plt.title(title)
-    plt.show(block=False)
+    # plt.show(block=False)
     print("\t####################\t", end="\n\n")

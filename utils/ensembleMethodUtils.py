@@ -1,30 +1,44 @@
+import joblib
 from sklearn.ensemble import VotingClassifier
 import neuralNetworkUtils
 import supportVectorMachineUtils
+import decisionTreeUtils
+import randomForestUtils
 import scoreUtils
 import random
 
-def get_clf(n):
-    nn_clfs = ['nn_1.pkl', 'nn_2.pkl', 'nn_3.pkl']
-    svm_clfs = ['svm_1.pkl', 'svm_2.pkl', 'svm_3.pkl']
+__clfs__ = []
 
-    estimators = []
+def set_clfs(clfs):
+    global __clfs__
+    __clfs__ = clfs
+
+def get_clf(n):
+    global __clfs__
+    tmp_clfs = __clfs__.copy()
+
+    clfs = []
+    clfs_names = []
 
     for i in n:
         clf = None
-        if i % 2 == 0:
-            file_name = random.choice(nn_clfs)
+        file_name = random.choice(tmp_clfs)
+        clfs_names.append(file_name[:-4])
+        if 'nn' in file_name:
             clf = neuralNetworkUtils.load_pickle(file_name)
-            nn_clfs.remove(file_name)
-        else:
-            file_name = random.choice(svm_clfs)
-            clf = supportVectorMachineUtils.load_pickle(file_name)
-            svm_clfs.remove(file_name)
-        estimators.append(clf)
+        if 'dt' in file_name:
+            clf = decisionTreeUtils.load_pickle(file_name)
+        if 'rf' in file_name:
+            clf = randomForestUtils.load_pickle(file_name)
+        tmp_clfs.remove(file_name)
+        clfs.append(clf)
 
-    clf = VotingClassifier(estimators)
+    clf = VotingClassifier([(n,c) for n,c in zip(clfs_names,clfs)], voting='hard')
     return clf
 
 # X = Data, n = amount of classifiers that are ensembled (an odd number of values is suggested)
 def predict(X, n=3):
     return get_clf(n).predict(X)
+
+def load_pickle():
+    return joblib.load('./pkl/ensemble_n=5.pkl')

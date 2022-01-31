@@ -25,7 +25,7 @@ def generate_pickle():
     started = datetime.datetime.now()
     print("\n\n\n>>>Starting training NN...<<<\n\n\n")
 
-    X, encoded_Y = prepareTrainingDataUtils.get_data()
+    X, encoded_Y = prepareTrainingDataUtils.get_same_amount_of_data_for_both_classes()
 
     classifier = KerasClassifier(model=neuralNetworkUtils.create_baseline, epochs=100, batch_size=50, verbose=0)
     estimators = []
@@ -34,9 +34,6 @@ def generate_pickle():
     pipeline = Pipeline(estimators)
     kfold = StratifiedKFold(n_splits=10, shuffle=True)
     results = cross_val_score(pipeline, X, encoded_Y, cv=kfold)
-    print('Baseline: %.2f%% (%.2f%%)' %
-          (results.mean() * 100,
-           results.std() * 100))
     print("\n\n\n>>>Finished training NN... It needed " + str(datetime.datetime.now() - started) + " time...<<<\n\n\n")
 
     pipeline.fit(X,encoded_Y)

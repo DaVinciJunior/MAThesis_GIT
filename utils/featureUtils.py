@@ -106,6 +106,13 @@ def getFeatureSetForText(text, upvotes=0, replies=0, submissionId=None, commentI
         average_number_of_emojis_per_sentence = 0.0
 
     formatted_text = re.sub("\r|\n","    ",text)
+
+    if(min_word_length == math.inf):
+        min_word_length = 0.0
+    if(min_number_of_words_per_sentence == math.inf):
+        min_number_of_words_per_sentence = 0.0
+
+
     writer.writerow(["https://www.reddit.com/r/Austria/comments/" + submissionId + "/comment/" + commentId + "/",formatted_text,
                      number_of_words_that_start_with_a_capital_letter,number_of_capital_letters,number_of_words,
                      number_of_unknown_words,number_of_words_that_contain_dialectal_words,average_word_length,
