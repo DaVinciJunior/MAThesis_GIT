@@ -27,6 +27,7 @@ from utils import ensembleMethodUtils
 from utils import scoreUtils
 import glob
 import os
+from langdetect import detect
 
 def fit_clfs():
     X,Y = prepareTrainingDataUtils.get_same_amount_of_data_for_both_classes()
@@ -51,6 +52,11 @@ def fit_clfs():
     return clf
 
 if __name__ == "__main__":
+#### Test with comment function of bot ####
+    # list = ["hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b"]
+    # for entry in list:
+    #     PRAWHelper.get_comment_by_id_and_reply_de_escalation_to_it(id=entry, placebo=True)
+#### Test with comment function of bot ####
 
 #### Test with actual new data from Reddit ####
     clf = ensembleMethodUtils.load_pickle()
@@ -60,7 +66,7 @@ if __name__ == "__main__":
     clf.fit(X_train, y_train)
     scoreUtils.show_score(X_test,y_test,clf,'Confusion Matrix Ensemble Method with 5 models')
 
-    n = 100
+    n = 30
     started = datetime.datetime.now()
     print(">>>Starting with the " + str(n) + " newest submissions...<<<\n\n\n")
     PRAWHelper.get_n_LatestSubmissionsAndCommentsAndExecuteFeatureFunction(n=n, func=getFeatureSetForText, preprocess=False)
@@ -91,10 +97,18 @@ if __name__ == "__main__":
         link = additional_data[idx][0]
         text = additional_data[idx][1]
         classification = pred[idx]
-        if pred[idx] == 1:
-            aggressive_comments.append([link, text, classification])
-        else:
-            non_aggressive_comments.append([link, text, classification])
+        # if comment in other language ignore it
+        try:
+            if detect(text) == 'de':
+                if pred[idx] == 1:
+                    aggressive_comments.append([link, text, classification])
+                else:
+                    non_aggressive_comments.append([link, text, classification])
+        except:
+            if pred[idx] == 1:
+                aggressive_comments.append([link, text, classification])
+            else:
+                non_aggressive_comments.append([link, text, classification])
         # text = ''
         # for entry in additional_data[idx]:
         #     text = text + '\n' + str(entry).replace('    ', '\n')

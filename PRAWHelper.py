@@ -1,3 +1,4 @@
+import random
 from datetime import datetime
 import praw
 
@@ -6,16 +7,20 @@ import sentHelper
 
 def login():
     # contains your login info comma-separated params: client_id, client_secret, user_agent
-    login_data = open("res/login-data.txt", "r")
+    login_data = open("res/login-data_new.txt", "r")
     my_params = login_data.read().split(',')
     my_client_id = my_params[0]
     my_client_secret = my_params[1]
     my_user_agent = my_params[2]
+    my_username = my_params[3]
+    my_password = my_params[4]
     return praw.Reddit(
         # insert login info here
         client_id=my_client_id,
         client_secret=my_client_secret,
-        user_agent=my_user_agent
+        user_agent=my_user_agent,
+        username=my_username,
+        password=my_password
     )
 
 def prettyPrinterComments(comment, sentiment, prefix):
@@ -182,6 +187,41 @@ def get_n_LatestSubmissionsAndCommentsAndExecuteFeatureFunction(n=100, func=None
             outputAllRepliesFeatureFunc(top_level_comment, func, "\t\t", preprocess, submission)
         # print("\n\n---\n\n")
 
+def get_comment_by_id_and_reply_de_escalation_to_it(id, placebo=True):
+    reddit = login()
+    comment = reddit.comment(id)
+    comment.reply("*Bleep Blop - I am a Bot.* 🤖  \n"
+                  "**Dein Kommentar wurde halb-automatisch selektiert (automatisch vorselektiert und dann von einem Menschen eingegrenzt) und die Antwort unterhalb automatisch generiert.**  \n"
+                  "___  \n" +
+                  str(get_random_de_escalation_phrase()) +
+                  "___  \n"
+                  "^(Ich versuche aggressive Kommentare auf Reddit zu de-eskalieren. War mein De-Eskalationsversuch sinnvoll? "
+                  "Dann bitte gib einen Upvote. Ansonsten ein Downvote. Vielen Dank für's Feedback.)"
+                  )
+    if not placebo:
+        comment.report("*Bleep Blop - I am a Bot.* 🤖  \nIch glaube, dieser Kommentar war aggressiv. Diese Meldung "
+                       "erfolgte automatisch.")
+
+def get_random_de_escalation_phrase():
+    de_escalation_phrases = [
+        "Ich hab' den Eindruck, dass du den Kommentar etwas weniger aggressiv formulieren könntest. Ich wär' dir sehr dankbar, wenn du den Kommentar editieren würdest.  \n",
+        "*Rosen sind rot, Veilchen sind blau*  \n*Dein Kommentar ginge weniger aggressiv, das weiß' ich genau.*  \n",
+        "Egal wie grantig der Mensch ist, essen muss er.  \nJetzt iss mal ein Snickers und vielleicht magst ja danach deinen Kommentar etwas überarbeiten.  \n",
+        "Ein von Zorn getrübtes Auge sieht nicht mehr, was recht oder unrecht ist.  \nWas ich damit sagen will...bitte versuch deinen Kommentar bisschen weniger angreifend zu formulieren.  \n",
+        "Respekt und Achtung verlieren sich am schnellsten in der Wut.  \nVielleicht können wir gemeinsam dazu beitragen, dass dieser Subreddit ein wenig ein schönerer Ort für alle Redditors wird.  \n",
+        "Aggressionen schaden nicht der Person, gegen die du sie richtest, sondern meistens nur dir.  \nIch würde mich freuen, wenn du deinen Kommentar etwas weniger toxisch umschreiben könntest.  \n",
+        "> Das Ärgerliche am Ärger ist, dass man sich schadet, ohne anderen zu nützen.  \n\n-*Kurt Tucholsky*  \nVielleicht können wir aufhören uns selber zu schaden, indem wir weniger grantig in die Welt hinausgehen?  \n",
+        "> Feder und Papier entzünden mehr Feuer als alle Streichhölzer der Welt.  \n\n-*Malcolm Stevenson Forbes*  \nIn unserem Kontext sind's halt digitale Feder und Papier. Wäre cool, wenn du deinem Kommentar bissl \"den Pfeffer\" nehmen könntest.  \n",
+        "> Wut ist wie eine Waffe, die man an der Klinge hält.  \n\n-*J.M. Barrie*  \nLegen wir die Waffen nieder und genießen wir den Subreddit als Chance mit anderen Schnitzel-EnthusiastikerInnen zu interagieren.  \n",
+        "> Wütend zu sein ist wie sich wegen der Fehler anderer an sich selbst zu rächen.  \n\n-*Alexander Pope*  \nMagst du unter Umständen deinen Kommentar versuchen konstruktiver zu verfassen?  \n",
+        "> An Ärger festzuhalten ist wie Gift zu trinken und erwarten, dass der andere dadurch stirbt.  \n\n-*Buddha*  \nMir ist klar, dass du vermutlich verärgert bist, aber hey vielleicht kannst du den Kommentar doch etwas umschreiben, damit er ned ganz so garstig rüberkommt?  \n",
+        "> Zorn. Furcht. Aggressivität. Die dunkle Seite der Macht sind sie. Besitz ergreifen sie leicht von dir.  \n\n-*Meister Yoda* in Star Wars: Episode V - Das Imperium schlägt zurück  \nDeinen Zorn nicht in diesem Subreddit ausleben du musst junger Padawan.  \n",
+        "Hier könnte etwas schlaues stehen, um dich dazu zu motivieren, weniger grantig zu sein, aber irgendwann geht auch mir die Muse aus. Editier bitte deinen Comment zu etwas weniger grantigem, ja?  \n",
+        "1...2...3...  \njetzt is'as mit'n Grant vorbei...  \n29...30...31...  \njetzta editier dein kommentar fleißig  \n",
+        "Hast du gewusst, dass Katzen in Schachteln statistisch viel beliebter sind als aggressive Kommentare?  \n...Nicht?! Wow, ja dann magst du vielleicht deinen Kommentar bisschen überarbeiten.  \n",
+        "> Marvin:\"Ich habe mit dem Bordcomputer gesprochen.\"  \nFord:\"Und?\"  \nMarvin:\"Er hasst mich.\"  \n\n-*Per Anhalter durch die Galaxis*  \nDas hätte der Bordcomputer auch anders handhaben können und ich bin mir zu 93% sicher du auch.  \n"
+    ]
+    return random.choice(de_escalation_phrases)
 
     ################### FAILED EXPERIMENTS ###################
 
