@@ -191,16 +191,15 @@ def get_comment_by_id_and_reply_de_escalation_to_it(id, placebo=True):
     reddit = login()
     comment = reddit.comment(id)
     comment.reply("*Bleep Blop - I am a Bot.* 🤖  \n"
-                  "**Dein Kommentar wurde halb-automatisch selektiert (automatisch vorselektiert und dann von einem Menschen eingegrenzt) und die Antwort unterhalb automatisch generiert.**  \n"
+                  "**Dein Kommentar wurde automatisch selektiert und beantwortet.**  \n"
                   "___  \n" +
                   str(get_random_de_escalation_phrase()) +
                   "___  \n"
-                  "^(Ich versuche aggressive Kommentare auf Reddit zu de-eskalieren. War mein De-Eskalationsversuch sinnvoll? "
-                  "Dann bitte gib einen Upvote. Ansonsten ein Downvote. Vielen Dank für's Feedback.)"
+                  "^(Ich versuche aggressive Kommentare auf Reddit zu de-eskalieren. War mein De-Eskalationsversuch sinnvoll?  \n"
+                  "Dann bitte gib einen Upvote.  \nAnsonsten ein Downvote.  \nVielen Dank für's Feedback.  \nP.s.: Für **konstruktives** Feedback in Form von Kommentaren/Nachrichten/... wäre ich dankbar.)"
                   )
     if not placebo:
-        comment.report("*Bleep Blop - I am a Bot.* 🤖  \nIch glaube, dieser Kommentar war aggressiv. Diese Meldung "
-                       "erfolgte automatisch.")
+        comment.report("Bleep Blop - I am a Bot.  \nIch glaube, dieser Kommentar war aggressiv.")
 
 def get_random_de_escalation_phrase():
     de_escalation_phrases = [

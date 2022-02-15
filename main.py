@@ -52,6 +52,20 @@ def fit_clfs():
     return clf
 
 if __name__ == "__main__":
+#### Reply to pre-selected comments ####
+    file = open("./res/Database.csv", encoding="utf-8")
+    csvreader = csv.reader(file)
+    header = next(csvreader)
+    for entry in csvreader:
+        id = entry[0]
+        placebo = (entry[3].lower() == "true")
+        already_replied = (entry[4].lower() == "true")
+        if not already_replied:
+            PRAWHelper.get_comment_by_id_and_reply_de_escalation_to_it(id=id, placebo=placebo)
+            print("Replied to: " + str(id) + "; Placebo = " + str(placebo))
+    file.close()
+#### Reply to pre-selected comments ####
+
 #### Test with comment function of bot ####
     # list = ["hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b"]
     # for entry in list:
@@ -59,88 +73,88 @@ if __name__ == "__main__":
 #### Test with comment function of bot ####
 
 #### Test with actual new data from Reddit ####
-    clf = ensembleMethodUtils.load_pickle()
-    X, Y = prepareTrainingDataUtils.get_same_amount_of_data_for_both_classes()
-    frac_test_split = 0.33
-    X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=frac_test_split)
-    clf.fit(X_train, y_train)
-    scoreUtils.show_score(X_test,y_test,clf,'Confusion Matrix Ensemble Method with 5 models')
-
-    n = 30
-    started = datetime.datetime.now()
-    print(">>>Starting with the " + str(n) + " newest submissions...<<<\n\n\n")
-    PRAWHelper.get_n_LatestSubmissionsAndCommentsAndExecuteFeatureFunction(n=n, func=getFeatureSetForText, preprocess=False)
-    print("\n\n\n>>>Finished with the " + str(n) + " newest submissions. It needed " + str(datetime.datetime.now() - started) + " time...<<<\n\n\n")
-
-    list_of_files = glob.glob('./logs/*.csv')
-    latest_file = max(list_of_files, key=os.path.getctime)
-    # X,additional_data = prepareTestDataUtils.get_n_data_samples(latest_file, 100)
-    X,additional_data = prepareTestDataUtils.get_data(latest_file)
-    # clf = ensembleMethodUtils.get_clf([5])
-    # fit_clfs(clf)
-    # clf = fit_clfs()
-    pred = clf.predict(X)
-    idx = 0
-
-    aggressive_comments = []
-    non_aggressive_comments = []
-
-    today = datetime.datetime.now()
-    formated_today = today.strftime('%d_%m_%Y_%H_%M')
-    dir_path = "./extras/runs/"
-    filename = os.path.join(dir_path, formated_today + '.csv')
-    file = open(filename, mode="w", encoding="utf-8", newline="")
-    writer = csv.writer(file, delimiter =",")
-    writer.writerow(["link","text","classification"])
-
-    for idx in range(len(pred)):
-        link = additional_data[idx][0]
-        text = additional_data[idx][1]
-        classification = pred[idx]
-        # if comment in other language ignore it
-        try:
-            if detect(text) == 'de':
-                if pred[idx] == 1:
-                    aggressive_comments.append([link, text, classification])
-                else:
-                    non_aggressive_comments.append([link, text, classification])
-        except:
-            if pred[idx] == 1:
-                aggressive_comments.append([link, text, classification])
-            else:
-                non_aggressive_comments.append([link, text, classification])
-        # text = ''
-        # for entry in additional_data[idx]:
-        #     text = text + '\n' + str(entry).replace('    ', '\n')
-        # if pred[idx] == 1:
-        #     text = text + '\naggressive'
-        #     # Sentiment Analysis was no success unfortunately
-        #     # body = sentHelper.preprocessStrings(additional_data[idx][1])
-        #     # text = text + '\n\t' + str(sentHelper.sent(body))
-        #     aggressive_comments.append(text)
-        # else:
-        #     text = text + '\nnon-aggressive'
-        #     non_aggressive_comments.append(text)
-
-    # Take max #number_of_comments comments of each category and out of context
-    number_of_comments = 250
-    aggressive_comments = random.sample(aggressive_comments, min(len(aggressive_comments),number_of_comments))
-    non_aggressive_comments = random.sample(non_aggressive_comments, min(len(non_aggressive_comments),number_of_comments))
-
+    # clf = ensembleMethodUtils.load_pickle()
+    # X, Y = prepareTrainingDataUtils.get_same_amount_of_data_for_both_classes()
+    # frac_test_split = 0.33
+    # X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=frac_test_split)
+    # clf.fit(X_train, y_train)
+    # scoreUtils.show_score(X_test,y_test,clf,'Confusion Matrix Ensemble Method with 5 models')
+    #
+    # n = 30
+    # started = datetime.datetime.now()
+    # print(">>>Starting with the " + str(n) + " newest submissions...<<<\n\n\n")
+    # PRAWHelper.get_n_LatestSubmissionsAndCommentsAndExecuteFeatureFunction(n=n, func=getFeatureSetForText, preprocess=False)
+    # print("\n\n\n>>>Finished with the " + str(n) + " newest submissions. It needed " + str(datetime.datetime.now() - started) + " time...<<<\n\n\n")
+    #
+    # list_of_files = glob.glob('./logs/*.csv')
+    # latest_file = max(list_of_files, key=os.path.getctime)
+    # # X,additional_data = prepareTestDataUtils.get_n_data_samples(latest_file, 100)
+    # X,additional_data = prepareTestDataUtils.get_data(latest_file)
+    # # clf = ensembleMethodUtils.get_clf([5])
+    # # fit_clfs(clf)
+    # # clf = fit_clfs()
+    # pred = clf.predict(X)
+    # idx = 0
+    #
+    # aggressive_comments = []
+    # non_aggressive_comments = []
+    #
+    # today = datetime.datetime.now()
+    # formated_today = today.strftime('%d_%m_%Y_%H_%M')
+    # dir_path = "./extras/runs/"
+    # filename = os.path.join(dir_path, formated_today + '.csv')
+    # file = open(filename, mode="w", encoding="utf-8", newline="")
+    # writer = csv.writer(file, delimiter =",")
+    # writer.writerow(["link","text","classification"])
+    #
+    # for idx in range(len(pred)):
+    #     link = additional_data[idx][0]
+    #     text = additional_data[idx][1]
+    #     classification = pred[idx]
+    #     # if comment in other language ignore it
+    #     try:
+    #         if detect(text) == 'de':
+    #             if pred[idx] == 1:
+    #                 aggressive_comments.append([link, text, classification])
+    #             else:
+    #                 non_aggressive_comments.append([link, text, classification])
+    #     except:
+    #         if pred[idx] == 1:
+    #             aggressive_comments.append([link, text, classification])
+    #         else:
+    #             non_aggressive_comments.append([link, text, classification])
+    #     # text = ''
+    #     # for entry in additional_data[idx]:
+    #     #     text = text + '\n' + str(entry).replace('    ', '\n')
+    #     # if pred[idx] == 1:
+    #     #     text = text + '\naggressive'
+    #     #     # Sentiment Analysis was no success unfortunately
+    #     #     # body = sentHelper.preprocessStrings(additional_data[idx][1])
+    #     #     # text = text + '\n\t' + str(sentHelper.sent(body))
+    #     #     aggressive_comments.append(text)
+    #     # else:
+    #     #     text = text + '\nnon-aggressive'
+    #     #     non_aggressive_comments.append(text)
+    #
+    # # Take max #number_of_comments comments of each category and out of context
+    # number_of_comments = 250
+    # aggressive_comments = random.sample(aggressive_comments, min(len(aggressive_comments),number_of_comments))
+    # non_aggressive_comments = random.sample(non_aggressive_comments, min(len(non_aggressive_comments),number_of_comments))
+    #
+    # # print('######################################################################')
+    # # print('\t\tAggressive Comments')
+    # for entry in aggressive_comments:
+    #     # print(entry, end='\n---\n')
+    #     writer.writerow(entry)
+    # # print('######################################################################')
+    # # print('######################################################################')
+    # # print('\t\tNon-Aggressive Comments')
+    # for entry in non_aggressive_comments:
+    #     # print(entry, end='\n---\n')
+    #     writer.writerow(entry)
     # print('######################################################################')
-    # print('\t\tAggressive Comments')
-    for entry in aggressive_comments:
-        # print(entry, end='\n---\n')
-        writer.writerow(entry)
-    # print('######################################################################')
-    # print('######################################################################')
-    # print('\t\tNon-Aggressive Comments')
-    for entry in non_aggressive_comments:
-        # print(entry, end='\n---\n')
-        writer.writerow(entry)
-    print('######################################################################')
-    print("Non-aggressive comments: %d\nAggressive comments: %d" % (len(non_aggressive_comments), len(aggressive_comments)))
-    file.close()
+    # print("Non-aggressive comments: %d\nAggressive comments: %d" % (len(non_aggressive_comments), len(aggressive_comments)))
+    # file.close()
 
 #### Test with actual new data from Reddit ####
 
