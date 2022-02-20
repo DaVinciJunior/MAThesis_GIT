@@ -1,5 +1,6 @@
 import csv
 import random
+import time
 
 import joblib
 from sklearn.model_selection import train_test_split
@@ -56,14 +57,20 @@ if __name__ == "__main__":
     file = open("./res/Database.csv", encoding="utf-8")
     csvreader = csv.reader(file)
     header = next(csvreader)
+    counter = 0
     for entry in csvreader:
         id = entry[0]
         placebo = (entry[3].lower() == "true")
         already_replied = (entry[4].lower() == "true")
         if not already_replied:
+            if (counter % 2) == 0 and counter != 0:
+                # Wait for an hour
+                print("2 replies per hour already happened. Waiting 1h before continuing to reply...")
+                time.sleep(3600)
             PRAWHelper.get_comment_by_id_and_reply_de_escalation_to_it(id=id, placebo=placebo)
             print("Replied to: " + str(id) + "; Placebo = " + str(placebo))
-    file.close()
+            counter = counter + 1
+    # file.close()
 #### Reply to pre-selected comments ####
 
 #### Test with comment function of bot ####

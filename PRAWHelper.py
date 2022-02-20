@@ -195,8 +195,10 @@ def get_comment_by_id_and_reply_de_escalation_to_it(id, placebo=True):
                   "___  \n" +
                   str(get_random_de_escalation_phrase()) +
                   "___  \n"
-                  "^(Ich versuche aggressive Kommentare auf Reddit zu de-eskalieren. War mein De-Eskalationsversuch sinnvoll?  \n"
-                  "Dann bitte gib einen Upvote.  \nAnsonsten ein Downvote.  \nVielen Dank für's Feedback.  \nP.s.: Für **konstruktives** Feedback in Form von Kommentaren/Nachrichten/... wäre ich dankbar.)"
+                  "^(Ich versuche aggressive Kommentare auf Reddit zu de-eskalieren.  \n"
+                  "Es besteht die Möglichkeit, dass dein Kommentar ein \"False Positive\" sprich einfach falsch als aggressiv erkannt wurde. In dem Fall diesen Kommentar bitte einfach ignorieren, danke.  \n"
+                  "War mein De-Eskalationsversuch sinnvoll?  \n"
+                  "Dann bitte gib einen Upvote.  \nAnsonsten ein Downvote.  \nVielen Dank für's Feedback.  \nP.s.: Für konstruktives Feedback habe ich immer ein offenes Ohr - Danke.)"
                   )
     if not placebo:
         comment.report("Bleep Blop - I am a Bot.  \nIch glaube, dieser Kommentar war aggressiv.")
@@ -205,7 +207,7 @@ def get_random_de_escalation_phrase():
     de_escalation_phrases = [
         "Ich hab' den Eindruck, dass du den Kommentar etwas weniger aggressiv formulieren könntest. Ich wär' dir sehr dankbar, wenn du den Kommentar editieren würdest.  \n",
         "*Rosen sind rot, Veilchen sind blau*  \n*Dein Kommentar ginge weniger aggressiv, das weiß' ich genau.*  \n",
-        "Egal wie grantig der Mensch ist, essen muss er.  \nJetzt iss mal ein Snickers und vielleicht magst ja danach deinen Kommentar etwas überarbeiten.  \n",
+        # "Egal wie grantig der Mensch ist, essen muss er.  \nJetzt iss mal ein Snickers und vielleicht magst ja danach deinen Kommentar etwas überarbeiten.  \n",
         "Ein von Zorn getrübtes Auge sieht nicht mehr, was recht oder unrecht ist.  \nWas ich damit sagen will...bitte versuch deinen Kommentar bisschen weniger angreifend zu formulieren.  \n",
         "Respekt und Achtung verlieren sich am schnellsten in der Wut.  \nVielleicht können wir gemeinsam dazu beitragen, dass dieser Subreddit ein wenig ein schönerer Ort für alle Redditors wird.  \n",
         "Aggressionen schaden nicht der Person, gegen die du sie richtest, sondern meistens nur dir.  \nIch würde mich freuen, wenn du deinen Kommentar etwas weniger toxisch umschreiben könntest.  \n",
@@ -216,11 +218,23 @@ def get_random_de_escalation_phrase():
         "> An Ärger festzuhalten ist wie Gift zu trinken und erwarten, dass der andere dadurch stirbt.  \n\n-*Buddha*  \nMir ist klar, dass du vermutlich verärgert bist, aber hey vielleicht kannst du den Kommentar doch etwas umschreiben, damit er ned ganz so garstig rüberkommt?  \n",
         "> Zorn. Furcht. Aggressivität. Die dunkle Seite der Macht sind sie. Besitz ergreifen sie leicht von dir.  \n\n-*Meister Yoda* in Star Wars: Episode V - Das Imperium schlägt zurück  \nDeinen Zorn nicht in diesem Subreddit ausleben du musst junger Padawan.  \n",
         "Hier könnte etwas schlaues stehen, um dich dazu zu motivieren, weniger grantig zu sein, aber irgendwann geht auch mir die Muse aus. Editier bitte deinen Comment zu etwas weniger grantigem, ja?  \n",
-        "1...2...3...  \njetzt is'as mit'n Grant vorbei...  \n29...30...31...  \njetzta editier dein kommentar fleißig  \n",
+        # "1...2...3...  \njetzt is'as mit'n Grant vorbei...  \n29...30...31...  \njetzta editier dein kommentar fleißig  \n",
         "Hast du gewusst, dass Katzen in Schachteln statistisch viel beliebter sind als aggressive Kommentare?  \n...Nicht?! Wow, ja dann magst du vielleicht deinen Kommentar bisschen überarbeiten.  \n",
-        "> Marvin:\"Ich habe mit dem Bordcomputer gesprochen.\"  \nFord:\"Und?\"  \nMarvin:\"Er hasst mich.\"  \n\n-*Per Anhalter durch die Galaxis*  \nDas hätte der Bordcomputer auch anders handhaben können und ich bin mir zu 93% sicher du auch.  \n"
+        "> Marvin:\"Ich habe mit dem Bordcomputer gesprochen.\"  \nFord:\"Und?\"  \nMarvin:\"Er hasst mich.\"  \n\n-*Per Anhalter durch die Galaxis*  \nDas hätte der Bordcomputer besser machen können und ich bin mir zu 93% sicher du auch.  \n"
     ]
-    return random.choice(de_escalation_phrases)
+    alternative = "  \n---  \n**Ein Vorschlag**... Du kannst deine Meinung genauso ausdrücken ohne aggressiv dabei zu sein. Ein exemplarisches Beispiel, wenn ich darf?"
+    alternative_variations = [
+        "  \n ** Aggressiv **:\"Du bist a bleda Beidl.\"  \n**Nicht-aggressiv**:\"I find dei Meinung is unbegründet.\"  \n",
+        "  \n ** Aggressiv **:\"Hawi bist behindert?\"  \n**Nicht-aggressiv**:\"I find's ned guat, was du da sagst, aber wenn das deine Meinung is, dann soll's so sein.\"  \n",
+        "  \n ** Aggressiv **:\"Geh scheißn drecks bot.\"  \n**Nicht-aggressiv**:\"I find den Bot unnedig, weil ... (gern auch im Kommentar konstruktives Feedback geben)\"  \n",
+        "  \n ** Aggressiv **:\"Konnst da a Watschen bei mir obholen kumman.\"  \n**Nicht-aggressiv**:\"I hab dir nix mehr zum sagen, sorry.\"  \n",
+        "  \n ** Aggressiv **:\"Bist ongrennt oda wos?\"  \n**Nicht-aggressiv**:\"Wennst manst, dass das gscheid is, dann mach's, i bin aba ehrlich gsagt ka Fan von.\"  \n",
+        "  \n ** Aggressiv **:\"Deppate Funzn!\"  \n**Nicht-aggressiv**:\"De Frau is ma ned sympathisch.\"  \n",
+        "  \n ** Aggressiv **:\"Hianbliatla.\"  \n**Nicht-aggressiv**:\"Find i ned gscheid, was du da schreibst, aber okay...\"  \n",
+        "  \n ** Aggressiv **:\"Schaß Kretzn du elendige!\"  \n**Nicht-aggressiv**:\"Du gehst ma ehrlich gsagt auf die Nerven. Sei so guad und lass das bitte.\"  \n",
+        "  \n ** Aggressiv **:\"Deppads Gsindl.\"  \n**Nicht-aggressiv**:\"Was die Gruppe da macht, find i ned guad.\"  \n"
+    ]
+    return random.choice(de_escalation_phrases) + alternative + random.choice(alternative_variations)
 
     ################### FAILED EXPERIMENTS ###################
 
