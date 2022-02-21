@@ -224,15 +224,15 @@ def get_random_de_escalation_phrase():
     ]
     alternative = "  \n---  \n**Ein Vorschlag**... Du kannst deine Meinung genauso ausdrücken ohne aggressiv dabei zu sein. Ein exemplarisches Beispiel, wenn ich darf?"
     alternative_variations = [
-        "  \n ** Aggressiv **:\"Du bist a bleda Beidl.\"  \n**Nicht-aggressiv**:\"I find dei Meinung is unbegründet.\"  \n",
-        "  \n ** Aggressiv **:\"Hawi bist behindert?\"  \n**Nicht-aggressiv**:\"I find's ned guat, was du da sagst, aber wenn das deine Meinung is, dann soll's so sein.\"  \n",
-        "  \n ** Aggressiv **:\"Geh scheißn drecks bot.\"  \n**Nicht-aggressiv**:\"I find den Bot unnedig, weil ... (gern auch im Kommentar konstruktives Feedback geben)\"  \n",
-        "  \n ** Aggressiv **:\"Konnst da a Watschen bei mir obholen kumman.\"  \n**Nicht-aggressiv**:\"I hab dir nix mehr zum sagen, sorry.\"  \n",
-        "  \n ** Aggressiv **:\"Bist ongrennt oda wos?\"  \n**Nicht-aggressiv**:\"Wennst manst, dass das gscheid is, dann mach's, i bin aba ehrlich gsagt ka Fan von.\"  \n",
-        "  \n ** Aggressiv **:\"Deppate Funzn!\"  \n**Nicht-aggressiv**:\"De Frau is ma ned sympathisch.\"  \n",
-        "  \n ** Aggressiv **:\"Hianbliatla.\"  \n**Nicht-aggressiv**:\"Find i ned gscheid, was du da schreibst, aber okay...\"  \n",
-        "  \n ** Aggressiv **:\"Schaß Kretzn du elendige!\"  \n**Nicht-aggressiv**:\"Du gehst ma ehrlich gsagt auf die Nerven. Sei so guad und lass das bitte.\"  \n",
-        "  \n ** Aggressiv **:\"Deppads Gsindl.\"  \n**Nicht-aggressiv**:\"Was die Gruppe da macht, find i ned guad.\"  \n"
+        "  \n **Aggressiv**:\"Du bist a bleda Beidl.\"  \n**Nicht-aggressiv**:\"I find dei Meinung is unbegründet.\"  \n",
+        "  \n **Aggressiv**:\"Hawi bist behindert?\"  \n**Nicht-aggressiv**:\"I find's ned guat, was du da sagst, aber wenn das deine Meinung is, dann soll's so sein.\"  \n",
+        "  \n **Aggressiv**:\"Geh scheißn drecks bot.\"  \n**Nicht-aggressiv**:\"I find den Bot unnedig, weil ... (gern auch im Kommentar konstruktives Feedback geben)\"  \n",
+        "  \n **Aggressiv**:\"Konnst da a Watschen bei mir obholen kumman.\"  \n**Nicht-aggressiv**:\"I hab dir nix mehr zum sagen, sorry.\"  \n",
+        "  \n **Aggressiv**:\"Bist ongrennt oda wos?\"  \n**Nicht-aggressiv**:\"Wennst manst, dass das gscheid is, dann mach's, i bin aba ehrlich gsagt ka Fan von.\"  \n",
+        "  \n **Aggressiv**:\"Deppate Funzn!\"  \n**Nicht-aggressiv**:\"De Frau is ma ned sympathisch.\"  \n",
+        "  \n **Aggressiv**:\"Hianbliatla.\"  \n**Nicht-aggressiv**:\"Find i ned gscheid, was du da schreibst, aber okay...\"  \n",
+        "  \n **Aggressiv**:\"Schaß Kretzn du elendige!\"  \n**Nicht-aggressiv**:\"Du gehst ma ehrlich gsagt auf die Nerven. Sei so guad und lass das bitte.\"  \n",
+        "  \n **Aggressiv**:\"Deppads Gsindl.\"  \n**Nicht-aggressiv**:\"Was die Gruppe da macht, find i ned guad.\"  \n"
     ]
     return random.choice(de_escalation_phrases) + alternative + random.choice(alternative_variations)
 
