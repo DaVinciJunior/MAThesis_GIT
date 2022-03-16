@@ -162,7 +162,7 @@ if __name__ == "__main__":
             # print(entry, end='\n---\n')
             writer.writerow(entry)
         print('######################################################################')
-        print("Non-aggressive comments: %d\nAggressive comme    nts: %d" % (len(non_aggressive_comments), len(aggressive_comments)))
+        print("Non-aggressive comments: %d\nAggressive     comments: %d" % (len(non_aggressive_comments), len(aggressive_comments)))
         file.close()
     #### Test with actual new data from Reddit ####
 

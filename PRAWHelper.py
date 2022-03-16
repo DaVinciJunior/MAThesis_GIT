@@ -171,6 +171,14 @@ def get_n_LatestSubmissionsInHotAndCommentsAndExecuteFunction(n=100, func=None, 
 def get_n_LatestSubmissionsAndCommentsAndExecuteFeatureFunction(n=100, func=None, preprocess=True):
     reddit = login()
     subreddit = reddit.subreddit("Austria")
+    # subreddit = reddit.subreddit("Buecher")
+    # subreddit = reddit.subreddit("Hoerbuecher")
+    # subreddit = reddit.subreddit("FitnessDE")
+    # subreddit = reddit.subreddit("de_IAmA")
+    # subreddit = reddit.subreddit("deutschland")
+    # subreddit = reddit.subreddit("berlin")
+    # subreddit = reddit.subreddit("aeiou")
+    # subreddit = reddit.subreddit("graz")
     for submission in subreddit.new(limit=n):
     # for submission in subreddit.hot(limit=n):
         # print("--------------------------")
@@ -191,7 +199,7 @@ def get_comment_by_id_and_reply_de_escalation_to_it(id, placebo=True):
     reddit = login()
     comment = reddit.comment(id)
     comment.reply("*Bleep Blop - I am a Bot.* 🤖  \n"
-                  "**Dein Kommentar wurde automatisch selektiert und beantwortet.**  \n"
+                  "**Dein Kommentar wurde automatisch selektiert und beantwortet. Es kann auch sein, dass ich mich täusche, dann bitte ich um Entschuldigung.**  \n"
                   "___  \n" +
                   str(get_random_de_escalation_phrase()) +
                   "___  \n"
@@ -205,22 +213,25 @@ def get_comment_by_id_and_reply_de_escalation_to_it(id, placebo=True):
 
 def get_random_de_escalation_phrase():
     de_escalation_phrases = [
-        "Ich hab' den Eindruck, dass du den Kommentar etwas weniger aggressiv formulieren könntest. Ich wär' dir sehr dankbar, wenn du den Kommentar editieren würdest.  \n",
-        "*Rosen sind rot, Veilchen sind blau*  \n*Dein Kommentar ginge weniger aggressiv, das weiß' ich genau.*  \n",
+        "Ich hab den Eindruck, dass du deinen Kommentar weniger aggressiv formulieren könntest. Ich wäre dir sehr dankbar, wenn du deinen Kommentar editieren würdest.  \n",
+        "Tut mir leid, dass ich störe, aber ich glaub, dass du irgendwem gegenüber angreifend warst. Ich wär dir dankbar, wenn du deinen Kommentar weniger aggressiv verfassen würdest. Danke dir.  \n",
+        "Ich hab das Gefühl, dass du jemanden in ein \"schlechts Licht\" gerückt hast. Vielleicht kannst du deine Meinung auch ausdrücken, ohne dabei angreifend/verletzend zu sein? I wär dir dankbar, wenn du es probieren würdest.  \n",
+        "In manchen Situationen ist man einfach grantig und dann will man auch Dampf ablassen. Ich will dich nur daran erinnern, dass das noch immer ein Mensch bzw. mehrere Menschen sind. Vielleicht kannst du das auch sagen, ohne diese(n) zu beleidigen. Danke für's Lesen.  \n",
+        # "*Rosen sind rot, Veilchen sind blau*  \n*Dein Kommentar ginge weniger aggressiv, das weiß' ich genau.*  \n",
         # "Egal wie grantig der Mensch ist, essen muss er.  \nJetzt iss mal ein Snickers und vielleicht magst ja danach deinen Kommentar etwas überarbeiten.  \n",
-        "Ein von Zorn getrübtes Auge sieht nicht mehr, was recht oder unrecht ist.  \nWas ich damit sagen will...bitte versuch deinen Kommentar bisschen weniger angreifend zu formulieren.  \n",
-        "Respekt und Achtung verlieren sich am schnellsten in der Wut.  \nVielleicht können wir gemeinsam dazu beitragen, dass dieser Subreddit ein wenig ein schönerer Ort für alle Redditors wird.  \n",
-        "Aggressionen schaden nicht der Person, gegen die du sie richtest, sondern meistens nur dir.  \nIch würde mich freuen, wenn du deinen Kommentar etwas weniger toxisch umschreiben könntest.  \n",
-        "> Das Ärgerliche am Ärger ist, dass man sich schadet, ohne anderen zu nützen.  \n\n-*Kurt Tucholsky*  \nVielleicht können wir aufhören uns selber zu schaden, indem wir weniger grantig in die Welt hinausgehen?  \n",
-        "> Feder und Papier entzünden mehr Feuer als alle Streichhölzer der Welt.  \n\n-*Malcolm Stevenson Forbes*  \nIn unserem Kontext sind's halt digitale Feder und Papier. Wäre cool, wenn du deinem Kommentar bissl \"den Pfeffer\" nehmen könntest.  \n",
-        "> Wut ist wie eine Waffe, die man an der Klinge hält.  \n\n-*J.M. Barrie*  \nLegen wir die Waffen nieder und genießen wir den Subreddit als Chance mit anderen Schnitzel-EnthusiastikerInnen zu interagieren.  \n",
-        "> Wütend zu sein ist wie sich wegen der Fehler anderer an sich selbst zu rächen.  \n\n-*Alexander Pope*  \nMagst du unter Umständen deinen Kommentar versuchen konstruktiver zu verfassen?  \n",
-        "> An Ärger festzuhalten ist wie Gift zu trinken und erwarten, dass der andere dadurch stirbt.  \n\n-*Buddha*  \nMir ist klar, dass du vermutlich verärgert bist, aber hey vielleicht kannst du den Kommentar doch etwas umschreiben, damit er ned ganz so garstig rüberkommt?  \n",
-        "> Zorn. Furcht. Aggressivität. Die dunkle Seite der Macht sind sie. Besitz ergreifen sie leicht von dir.  \n\n-*Meister Yoda* in Star Wars: Episode V - Das Imperium schlägt zurück  \nDeinen Zorn nicht in diesem Subreddit ausleben du musst junger Padawan.  \n",
-        "Hier könnte etwas schlaues stehen, um dich dazu zu motivieren, weniger grantig zu sein, aber irgendwann geht auch mir die Muse aus. Editier bitte deinen Comment zu etwas weniger grantigem, ja?  \n",
+        # "Ein von Zorn getrübtes Auge sieht nicht mehr, was recht oder unrecht ist.  \nWas ich damit sagen will...bitte versuch deinen Kommentar bisschen weniger angreifend zu formulieren.  \n",
+        # "Respekt und Achtung verlieren sich am schnellsten in der Wut.  \nVielleicht können wir gemeinsam dazu beitragen, dass dieser Subreddit ein wenig ein schönerer Ort für alle Redditors wird.  \n",
+        # "Aggressionen schaden nicht der Person, gegen die du sie richtest, sondern meistens nur dir.  \nIch würde mich freuen, wenn du deinen Kommentar etwas weniger toxisch umschreiben könntest.  \n",
+        # "> Das Ärgerliche am Ärger ist, dass man sich schadet, ohne anderen zu nützen.  \n\n-*Kurt Tucholsky*  \nVielleicht können wir aufhören uns selber zu schaden, indem wir weniger grantig in die Welt hinausgehen?  \n",
+        # "> Feder und Papier entzünden mehr Feuer als alle Streichhölzer der Welt.  \n\n-*Malcolm Stevenson Forbes*  \nIn unserem Kontext sind's halt digitale Feder und Papier. Wäre cool, wenn du deinem Kommentar bissl \"den Pfeffer\" nehmen könntest.  \n",
+        # "> Wut ist wie eine Waffe, die man an der Klinge hält.  \n\n-*J.M. Barrie*  \nLegen wir die Waffen nieder und genießen wir den Subreddit als Chance mit anderen Schnitzel-EnthusiastikerInnen zu interagieren.  \n",
+        # "> Wütend zu sein ist wie sich wegen der Fehler anderer an sich selbst zu rächen.  \n\n-*Alexander Pope*  \nMagst du unter Umständen deinen Kommentar versuchen konstruktiver zu verfassen?  \n",
+        # "> An Ärger festzuhalten ist wie Gift zu trinken und erwarten, dass der andere dadurch stirbt.  \n\n-*Buddha*  \nMir ist klar, dass du vermutlich verärgert bist, aber hey vielleicht kannst du den Kommentar doch etwas umschreiben, damit er ned ganz so garstig rüberkommt?  \n",
+        # "> Zorn. Furcht. Aggressivität. Die dunkle Seite der Macht sind sie. Besitz ergreifen sie leicht von dir.  \n\n-*Meister Yoda* in Star Wars: Episode V - Das Imperium schlägt zurück  \nDeinen Zorn nicht in diesem Subreddit ausleben du musst junger Padawan.  \n",
+        # "Hier könnte etwas schlaues stehen, um dich dazu zu motivieren, weniger grantig zu sein, aber irgendwann geht auch mir die Muse aus. Editier bitte deinen Comment zu etwas weniger grantigem, ja?  \n",
         # "1...2...3...  \njetzt is'as mit'n Grant vorbei...  \n29...30...31...  \njetzta editier dein kommentar fleißig  \n",
-        "Hast du gewusst, dass Katzen in Schachteln statistisch viel beliebter sind als aggressive Kommentare?  \n...Nicht?! Wow, ja dann magst du vielleicht deinen Kommentar bisschen überarbeiten.  \n",
-        "> Marvin:\"Ich habe mit dem Bordcomputer gesprochen.\"  \nFord:\"Und?\"  \nMarvin:\"Er hasst mich.\"  \n\n-*Per Anhalter durch die Galaxis*  \nDas hätte der Bordcomputer besser machen können und ich bin mir zu 93% sicher du auch.  \n"
+        # "Hast du gewusst, dass Katzen in Schachteln statistisch viel beliebter sind als aggressive Kommentare?  \n...Nicht?! Wow, ja dann magst du vielleicht deinen Kommentar bisschen überarbeiten.  \n",
+        # "> Marvin:\"Ich habe mit dem Bordcomputer gesprochen.\"  \nFord:\"Und?\"  \nMarvin:\"Er hasst mich.\"  \n\n-*Per Anhalter durch die Galaxis*  \nDas hätte der Bordcomputer besser machen können und ich bin mir zu 93% sicher du auch.  \n"
     ]
     alternative = "  \n---  \n**Ein Vorschlag**... Du kannst deine Meinung genauso ausdrücken ohne aggressiv dabei zu sein. Ein exemplarisches Beispiel, wenn ich darf?"
     alternative_variations = [
