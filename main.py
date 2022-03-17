@@ -165,6 +165,22 @@ if __name__ == "__main__":
         print("Non-aggressive comments: %d\nAggressive     comments: %d" % (len(non_aggressive_comments), len(aggressive_comments)))
         file.close()
     #### Test with actual new data from Reddit ####
+    #### Retrieve the bots performance ####
+    elif args.mode == "performance":
+        all_comments = PRAWHelper.get_all_comments_by_bot("<insert_username_here>", None)
+        all_scores = []
+        for entry in all_comments:
+            entry.refresh()
+            print("https://reddit.com" + str(entry.permalink) + " ; " + str(entry.score) + " ; " + str(len(entry.replies)))
+            all_scores.append(entry.score)
+            for reply in entry.replies:
+                print("\t" + reply.body + " ; " + str(reply.score))
+        plt.boxplot(all_scores, flierprops=dict(markerfacecolor='r', marker='D'), vert=True)
+        plt.axis("off")
+        plt.title("Boxplot diagram of scores of the bot")
+        for entry in all_scores:
+            plt.text(0.9, entry - 0.2, str(entry))
+        plt.show()
 
 #### Test with comment function of bot ####
     # list = ["hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b","hwx761b"]

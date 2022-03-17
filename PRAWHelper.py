@@ -247,6 +247,11 @@ def get_random_de_escalation_phrase():
     ]
     return random.choice(de_escalation_phrases) + alternative + random.choice(alternative_variations)
 
+def get_all_comments_by_bot(name="BotName", limit=None):
+    reddit = login()
+    return reddit.redditor(name).comments.new(limit=limit)
+
+
     ################### FAILED EXPERIMENTS ###################
 
 
